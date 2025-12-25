@@ -10,6 +10,7 @@
     "clock"
   ],
   "modules-right": [
+    "hyprland/language",
     "tray",
     "pulseaudio",
     "network",
@@ -23,6 +24,12 @@
     "persistent-workspaces": {
       "*": 5
     }
+  },
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": "en",
+    "format-in": "ml",
+    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
   },
   "clock": {
     "format": "{:%a %b %d  %H:%M}", // GNOME Style (Wed Dec 25 10:30)

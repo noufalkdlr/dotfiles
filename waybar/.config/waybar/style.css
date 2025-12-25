@@ -50,3 +50,13 @@ window#waybar {
     color: #f7768e; /* Red color for power button */
     padding-right: 15px;
 }
+
+#language {
+    padding: 0 10px;
+    background: transparent;
+    color: #7aa2f7; /* ബ്ലൂ കളർ */
+    font-weight: bold;
+}
+
+/* Wi-Fi Icon Adjustment */
+
