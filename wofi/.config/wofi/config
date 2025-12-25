@@ -1,7 +1,7 @@
 mode=drun
 show=drun
-width=600
-height=350
+width=400
+height=400
 offset=0
 location=center
 allow_images=true
