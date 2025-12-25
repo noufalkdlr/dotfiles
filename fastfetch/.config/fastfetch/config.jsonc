@@ -3,7 +3,7 @@
   "logo": {
     "type": "kitty",
     "source": "~/.config/fastfetch/assets/arch-icon.png",
-    "width": 35,
+    "width": 33,
     "recache": true
   },
   "modules": [
