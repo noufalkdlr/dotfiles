@@ -147,7 +147,6 @@ xdg-utils
 xmlto
 xorg-server
 xorg-xinit
-yazi
 yelp
 yt-dlp
 zram-generator
