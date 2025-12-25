@@ -5,14 +5,14 @@ echo "Setting up dotfiles..."
 # Link configurations
 echo "Stowing dotfiles..."
 for folder in */; do
-    folder=${folder%/}
-    
-    if [ "$folder" == ".git" ]; then
-        continue
-    fi
+  folder=${folder%/}
 
-    echo "🔗 Linking $folder..."
-    stow "$folder"
+  if [ "$folder" == ".git" ]; then
+    continue
+  fi
+
+  echo "🔗 Linking $folder..."
+  stow "$folder"
 done
 
 # Install packages
@@ -31,4 +31,8 @@ else
   echo "Warning: gnome-settings.ini not found, skipping..."
 fi
 
-echo "Done! All configurations are linked."
+# Refresh Font Cache (Added for Malayalam fonts fix)
+echo "Updating font cache..."
+fc-cache -fv
+
+echo "Done! All configurations are linked and setup is complete. 🎉"
