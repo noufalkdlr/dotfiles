@@ -1,13 +1,13 @@
-# Install noto sans malayalam fonts
+## 1. Install noto sans malayalam fonts
 
 
-Create 64.mal.conf
+## 2. Create 64.mal.conf
 ```bash
 sudo nano /etc/fonts/conf.d/64-mal.conf
 ```
 
 
-# Paste this code to 64-mal.conf
+## 3. Paste this code to 64-mal.conf
 
 ```bash
 <?xml version="1.0"?>
@@ -29,7 +29,7 @@ sudo nano /etc/fonts/conf.d/64-mal.conf
 </fontconfig>
 ```
 
-# Clear fc cache
+## 4. Clear fc cache
 ```bash
 fc-cache -fv
 ```
