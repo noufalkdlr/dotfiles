@@ -18,6 +18,13 @@ Dumps all current GNOME desktop settings into a file.
 dconf dump / > gnome-settings.ini
 ```
 
+### Quick Backup (Automated) ⚡
+Alternatively, run the backup script to automatically update lists and push changes to GitHub:
+```bash
+./backup.sh
+```
+
+
 ---
 
 ## 2. Restore Commands (Run on New System) 📥
