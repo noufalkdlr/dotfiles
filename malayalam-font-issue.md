@@ -1,4 +1,4 @@
-## 1. Install noto sans malayalam fonts
+## 1. Install Noto Sans Malayalam Fonts
 
 
 ## 2. Create 64.mal.conf
