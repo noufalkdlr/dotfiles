@@ -1,0 +1,45 @@
+[global]
+    # --- Display ---
+    width = 300
+    height = 100
+    origin = top-right
+    offset = 15x50  # Offset from top-right
+    notification_limit = 5
+
+    # --- Padding (Inner Space) ---
+    padding = 10
+    horizontal_padding = 15
+
+    # --- Appearance (Tokyo Night Style) ---
+    font = Cascadia Mono 10
+    frame_width = 2
+    frame_color = "#7aa2f7"  # Blue border
+    corner_radius = 10       # Rounded corners
+    separator_color = frame  # Separator matches frame color
+
+    # --- Behaviors ---
+    # Pause timeout when mouse hovers? (Set to 'false' if not needed)
+    mouse_over = false
+    
+    # Mouse click actions
+    mouse_left_click = close_current
+    mouse_right_click = close_all
+
+[urgency_low]
+    # --- Low Priority ---
+    background = "#1a1b26"
+    foreground = "#c0caf5"
+    timeout = 2  # 2 seconds only
+
+[urgency_normal]
+    # --- Normal Priority (Standard) ---
+    background = "#1a1b26"
+    foreground = "#c0caf5"
+    timeout = 2  # Auto-dismiss after 2 seconds ⚡
+
+[urgency_critical]
+    # --- Critical Errors ---
+    background = "#1a1b26"
+    foreground = "#f7768e"  # Red text
+    frame_color = "#f7768e" # Red border
+    timeout = 0  # Requires manual dismissal (Must click)
