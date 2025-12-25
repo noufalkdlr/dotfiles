@@ -46,7 +46,7 @@ dconf load / < gnome-settings.ini
 
 ## 3. Quick Setup (Automated) ⚡
 
-Alternatively, you can run the installation script to do everything automatically:
+Alternatively, run the installation script to do everything automatically:
 
 ```bash
 sh install.sh
