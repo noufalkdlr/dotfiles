@@ -28,6 +28,7 @@ gimp
 git
 github-cli
 gnome-disk-utility
+gnome-themes-extra
 gnome-tweaks
 graphviz
 grim
@@ -64,6 +65,7 @@ noto-fonts-cjk
 noto-fonts-extra
 ntfs-3g
 nvidia-open-dkms
+nwg-look
 obs-studio
 os-prober
 pacman-contrib
@@ -103,6 +105,7 @@ wireless_tools
 wireplumber
 wl-clipboard
 wofi
+xdg-desktop-portal-gtk
 xdg-utils
 xmlto
 xorg-server
