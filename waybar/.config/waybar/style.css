@@ -1,7 +1,7 @@
 /* Tokyo Night Colors defined manually */
-@define-color background #1a1b26;
-@define-color foreground #c0caf5;
-@define-color primary #7aa2f7;
+@define-color background rgba(0, 0, 0, 0.8);
+@define-color foreground #ffffff;
+@define-color primary #ffffff;
 @define-color secondary #9ece6a;
 @define-color alert #f7768e;
 @define-color disabled #414868;
@@ -18,13 +18,13 @@
 window#waybar {
   background-color: @background;
   color: @foreground;
-  border-bottom: 1px solid #24283b;
+  border-bottom: none;
 }
 
 /* --- Workspaces --- */
 #workspaces button {
   padding: 0 5px;
-  color: #565f89;
+  color: #616161;
 }
 
 #workspaces button.active {
