@@ -66,6 +66,7 @@ network-manager-applet
 networkmanager
 noto-fonts
 noto-fonts-cjk
+noto-fonts-emoji
 noto-fonts-extra
 ntfs-3g
 nvidia-open-dkms
