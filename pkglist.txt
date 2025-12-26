@@ -117,12 +117,16 @@ ptyxis
 python-sphinx
 python-yaml
 qbittorrent
+qt5-graphicaleffects
+qt5-quickcontrols2
+qt5-svg
 reflector
 rsync
 rust
 rust-bindgen
 rust-src
 rygel
+sddm
 showtime
 simple-scan
 slurp
