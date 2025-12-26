@@ -39,12 +39,13 @@ window#waybar {
 #custom-menu {
   color: @primary;
   padding-left: 10px;
-  padding-right: 15px;
+  padding-right: 10px;
   font-size: 20px; /* Made menu icon slightly larger */
 }
 
 #clock {
   color: @foreground;
+  font-size: 13px;
 }
 
 #battery,
@@ -55,7 +56,16 @@ window#waybar {
   color: @foreground;
 }
 
-#network { color: #7dcfff; }
+#pulseaudio{
+    font-size: 22px;
+    padding: 0 12px;
+}
+
+#network { 
+  color: #7dcfff;
+  font-size:19px;
+
+}
 #pulseaudio { color: #9ece6a; }
 #battery { color: #e0af68; }
 #custom-power { color: @alert; padding-right: 15px; }

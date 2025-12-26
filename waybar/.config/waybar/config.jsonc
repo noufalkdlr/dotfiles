@@ -32,7 +32,7 @@
   },
   // --- Custom Menu ---
   "custom/menu": {
-    "format": " 󰣇 ",
+    "format": "󰣇",
     "on-click": "wofi --show drun",
     "tooltip": false
   },
