@@ -7,7 +7,7 @@ echo "Stowing dotfiles..."
 for folder in */; do
   folder=${folder%/}
 
-  if [ "$folder" == ".git" ]; then
+  if [ "$folder" == ".git" ] || [ "$folder" == "wallpaper" ]; then
     continue
   fi
 
