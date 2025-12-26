@@ -28,6 +28,7 @@ gimp
 git
 github-cli
 gnome-disk-utility
+gnome-text-editor
 gnome-themes-extra
 gnome-tweaks
 graphviz
