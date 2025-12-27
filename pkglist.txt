@@ -8,7 +8,6 @@ btrfs-progs
 chafa
 chromium
 cpio
-dkms
 docker
 docker-compose
 dosfstools
@@ -102,6 +101,7 @@ thunderbird
 tmux
 tree
 ttf-indic-otf
+unzip
 vim
 virtualbox
 virtualbox-host-dkms
