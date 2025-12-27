@@ -55,7 +55,7 @@
       "󰤨"
     ],
     "tooltip-format": "{essid}",
-    "on-click": "rofi-wifi-menu"
+    "on-click": "rofi-wifi-menu -theme /home/noufal/.config/rofi/rofi-wifi-menu.rasi"
   },
   // --- Audio ---
   "pulseaudio": {
