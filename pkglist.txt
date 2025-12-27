@@ -38,6 +38,7 @@ grim
 grub
 gst-plugin-pipewire
 htop
+hypridle
 hyprland
 hyprpaper
 imagemagick
@@ -87,6 +88,7 @@ qt5-graphicaleffects
 qt5-quickcontrols2
 qt5-svg
 reflector
+rofi
 rsync
 rust
 rust-bindgen

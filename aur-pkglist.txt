@@ -1,5 +1,6 @@
 localsend-bin
 postman-bin
+rofi-wifi-menu-git
 visual-studio-code-bin
 wlogout
 yay

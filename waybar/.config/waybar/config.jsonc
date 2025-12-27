@@ -12,7 +12,7 @@
     "clock"
   ],
   "modules-right": [
-    "group/tray-expander",
+    "tray",
     "network",
     "pulseaudio",
     "battery",
@@ -55,7 +55,7 @@
       "󰤨"
     ],
     "tooltip-format": "{essid}",
-    "on-click": "kitty nmtui"
+    "on-click": "rofi-wifi-menu"
   },
   // --- Audio ---
   "pulseaudio": {

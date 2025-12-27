@@ -64,8 +64,8 @@ window#waybar {
 #network { 
   color: #7dcfff;
   font-size:19px;
-
 }
+
 #pulseaudio { color: #9ece6a; }
 #battery { color: #e0af68; }
 #custom-power { color: @alert; padding-right: 15px; }
@@ -77,7 +77,7 @@ window#waybar {
 }
 
 #tray {
-  background-color: #24283b;
+  background-color: transparent;
   padding: 0 10px;
   border-radius: 10px;
   margin: 5px 0;
