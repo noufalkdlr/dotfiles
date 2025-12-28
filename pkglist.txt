@@ -45,6 +45,7 @@ inetutils
 intel-ucode
 iw
 iwd
+kdeconnect
 kitty
 libpulse
 libva-nvidia-driver
