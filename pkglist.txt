@@ -118,6 +118,7 @@ wireplumber
 wl-clipboard
 wofi
 xdg-desktop-portal-gtk
+xdg-desktop-portal-hyprland
 xdg-utils
 xmlto
 xorg-server
