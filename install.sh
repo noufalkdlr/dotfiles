@@ -7,7 +7,7 @@ echo "Stowing dotfiles..."
 for folder in */; do
   folder=${folder%/}
 
-  if [ "$folder" == ".git" ] || [ "$folder" == "wallpaper" ]; then
+  if [ "$folder" == ".git" ]; then
     continue
   fi
 
@@ -37,7 +37,6 @@ fc-cache -fv
 
 # Enable Services
 echo "Enabling Services... 🔌"
-sudo systemctl enable sddm
 sudo systemctl enable NetworkManager
 sudo systemctl enable bluetooth
 
