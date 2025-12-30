@@ -1,4 +1,3 @@
-better-control-git
 localsend-bin
 postman-bin
 yay
