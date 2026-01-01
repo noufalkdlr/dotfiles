@@ -5,13 +5,11 @@ base-devel
 bc
 bluez
 bluez-utils
-bridge-utils
 brightnessctl
 btrfs-progs
 chafa
 chromium
 cpio
-dnsmasq
 docker
 docker-compose
 dosfstools
@@ -48,7 +46,7 @@ htop
 imagemagick
 inetutils
 intel-ucode
-iptables-nft
+iptables
 iw
 iwd
 kitty
@@ -80,7 +78,6 @@ npm
 ntfs-3g
 nvidia-open-dkms
 obs-studio
-openbsd-netcat
 pacman-contrib
 pavucontrol
 pipewire
@@ -90,7 +87,6 @@ pipewire-pulse
 python-sphinx
 python-yaml
 qbittorrent
-qemu-desktop
 qt5-graphicaleffects
 qt5-quickcontrols2
 qt5-svg
@@ -110,9 +106,7 @@ tmux
 tree
 ttf-indic-otf
 unzip
-vde2
 vim
-virt-manager
 virt-viewer
 virtualbox
 virtualbox-host-dkms
