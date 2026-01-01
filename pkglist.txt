@@ -107,7 +107,6 @@ tree
 ttf-indic-otf
 unzip
 vim
-virt-viewer
 virtualbox
 virtualbox-host-dkms
 wget
