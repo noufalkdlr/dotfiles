@@ -119,6 +119,7 @@ xdg-utils
 xmlto
 xorg-server
 xorg-xinit
+yazi
 yt-dlp
 zram-generator
 zsh
