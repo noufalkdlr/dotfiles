@@ -48,7 +48,7 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 theme = Atom
-font-family = Cascadia code NF
+font-family = Cascadia Code NF SemiBold
 font-size = 12
 adjust-cell-height = 10%
 
