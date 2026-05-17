@@ -39,10 +39,6 @@ else
   echo "Warning: gnome-settings.ini not found, skipping..."
 fi
 
-# Refresh Font Cache (Added for Malayalam fonts fix)
-echo "Updating font cache..."
-fc-cache -fv
-
 # Enable Services
 echo "Enabling Services... 🔌"
 sudo systemctl enable NetworkManager
