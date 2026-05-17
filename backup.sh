@@ -18,8 +18,11 @@ git add .
 
 if ! git diff-index --quiet HEAD; then
   git commit -m "Auto-backup: $(date '+%Y-%m-%d %H:%M:%S')"
-  git push origin main
-  echo "All done! Backup secured in GitHub. ✅"
+  echo "✅ Changes committed."
 else
-  echo "No changes to backup. Everything is up to date! ✨"
+  echo "✨ No new changes to commit."
 fi
+
+git push origin main
+
+echo "🎉 All done! Backup secured in GitHub."
