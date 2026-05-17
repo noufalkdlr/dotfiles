@@ -52,7 +52,7 @@ Installs packages from the generated list.
 sudo pacman -S --needed - < pkglist.txt
 ```
 
-### Install Custom Fonts 🅰️
+### Install Custom Fonts
 
 Downloads and extracts required fonts (like Nerd Fonts) directly from GitHub releases to keep the repository lightweight.
 
