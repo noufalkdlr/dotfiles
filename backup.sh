@@ -12,15 +12,14 @@ pacman -Qnqe >pkglist.txt
 echo " Exporting yay package list..."
 pacman -Qmqe >aur-pkglist.txt
 
-# Update GNOME Settings
-echo "⚙️ Exporting GNOME settings..."
-dconf dump / >gnome-settings.ini
-
 # Push to GitHub
 echo "☁️ Pushing to GitHub..."
 git add .
-# Commit with current timestamp
-git commit -m "Auto-backup: $(date '+%Y-%m-%d %H:%M:%S')"
-git push origin main
 
-echo "All done! Backup secured in GitHub. ✅"
+if ! git diff-index --quiet HEAD; then
+  git commit -m "Auto-backup: $(date '+%Y-%m-%d %H:%M:%S')"
+  git push origin main
+  echo "All done! Backup secured in GitHub. ✅"
+else
+  echo "No changes to backup. Everything is up to date! ✨"
+fi
