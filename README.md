@@ -7,23 +7,28 @@ This repository contains my personal configurations for Arch Linux (Kitty, Neovi
 Use these commands to generate backup files before reinstalling.
 
 ### Generate Package List
+
 Creates a list of all native packages installed on the system (excludes AUR).
+
 ```bash
 pacman -Qnqe > pkglist.txt
 ```
 
 ### Backup GNOME Settings
+
 Dumps all current GNOME desktop settings into a file.
+
 ```bash
 dconf dump / > gnome-settings.ini
 ```
 
 ### Quick Backup (Automated) ⚡
+
 Alternatively, run the backup script to automatically update lists and push changes to GitHub:
+
 ```bash
 ./backup.sh
 ```
-
 
 ---
 
@@ -32,21 +37,27 @@ Alternatively, run the backup script to automatically update lists and push chan
 Use these commands to set up the new system.
 
 ### Link Configurations (Stow)
+
 Symlinks the config folders to the target directory.
+
 ```bash
 stow kitty mpv fastfetch
 ```
 
 ### Install Packages
+
 Installs packages from the generated list.
+
 ```bash
 sudo pacman -S --needed - < pkglist.txt
 ```
 
-### Restore GNOME Settings
-Loads the saved settings back into GNOME.
+### Install Custom Fonts 🅰️
+
+Downloads and extracts required fonts (like Nerd Fonts) directly from GitHub releases to keep the repository lightweight.
+
 ```bash
-dconf load / < gnome-settings.ini
+./setup_fonts.sh
 ```
 
 ---
