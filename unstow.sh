@@ -16,4 +16,4 @@ for folder in */; do
   stow -D "$folder"
 done
 
-echo "✅ All dotfiles unstowed successfully! സിസ്റ്റം ക്ലീൻ ആയി."
+echo "✅ All dotfiles unstowed successfully!"
