@@ -1,0 +1,15 @@
+mode=drun
+show=drun
+width=370
+height=475
+offset=0
+location=center
+allow_images=true
+image_size=32
+prompt=Search Apps...
+no_actions=true
+term=kitty
+insensitive=true
+
+key_down=Ctrl-n,Down
+key_up=Ctrl-p,Up

@@ -1,0 +1,21 @@
+[opener]
+# Open files with Neovim
+edit = [{ run = 'nvim "$@"', block = true, desc = "Open with Neovim" }]
+
+# Play videos with mpv
+play = [{ run = 'mpv "$@"', orphan = true, desc = "Play with mpv" }]
+
+# Open images with imv
+view = [{ run = 'imv "$@"', orphan = true, desc = "View with imv" }]
+
+[open]
+rules = [
+  # Use Neovim for all text-based files
+  { mime = "text/*", use = "edit" },
+
+  # Use mpv for videos
+  { mime = "video/*", use = "play" },
+
+  # Use imv for images
+  { mime = "image/*", use = "view" },
+]

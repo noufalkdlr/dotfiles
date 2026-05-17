@@ -1,0 +1,17 @@
+android-studio
+better-control-git
+figma-agent-linux
+fpm
+git-wizard
+localsend-bin
+opera
+otf-manjari
+paru
+pyinstaller
+python-inquirer
+tor-browser-alpha-bin
+watchman-bin
+wofi-emoji
+yay
+yay-debug
+zen-browser-bin

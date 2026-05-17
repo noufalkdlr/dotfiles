@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Start a new tmux session named 'cashevide' and name the first window 'backend'
+tmux new-session -d -s cashevide -n 'backend'
+
+# Window 1 (backend): Navigate to the backend folder and open LazyVim
+tmux send-keys -t cashevide:backend 'cd ~/Projects/cashevide-api/ && nvim .' C-m
+
+# Window 2 (frontend): Create a new window, navigate to the frontend folder, and open LazyVim
+tmux new-window -t cashevide -n 'frontend'
+tmux send-keys -t cashevide:frontend 'cd ~/Projects/cashevide-frontend/ && nvim .' C-m
+
+# Window 3 (kulala): Create a new window, navigate to the frontend folder, and open LazyVim
+tmux new-window -t cashevide -n 'kulala'
+tmux send-keys -t cashevide:kulala 'cd ~/Projects/cashevide-api/api_tests/ && nvim .' C-m
+
+# Window 4 (servers): Create a new window to run Docker logs and Expo
+tmux new-window -t cashevide -n 'servers'
+
+# Window 4, Pane 1: Docker Logs
+tmux send-keys -t cashevide:servers 'cd ~/Projects/cashevide-frontend/ && npx expo start -c' C-m
+
+# Split Window 4 horizontally (to create a second pane)
+tmux split-window -h -t cashevide:servers
+
+# Window 4, Pane 2: Expo Start
+tmux send-keys -t cashevide:servers 'cd ~/Projects/cashevide-api/ && docker compose logs -f web' C-m
+
+# Return to the first window (backend code) after setting everything up
+tmux select-window -t cashevide:backend
+
+# Attach the session to your Kitty terminal
+tmux attach-session -t cashevide

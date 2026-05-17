@@ -1,0 +1,10 @@
+# Ignore wallpaper folder
+^/wallpaper.*
+
+# Ignore other unnecessary files
+README\.md
+LICENSE
+\.git
+\.gitignore
+backup\.sh
+install\.sh

@@ -1,0 +1,84 @@
+/* Tokyo Night Colors defined manually */
+@define-color background rgba(0, 0, 0, 0.8);
+@define-color foreground #ffffff;
+@define-color primary #ffffff;
+@define-color secondary #9ece6a;
+@define-color alert #f7768e;
+@define-color disabled #414868;
+
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: 'Cascadia Mono', 'Noto Sans Malayalam', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+window#waybar {
+  background-color: @background;
+  color: @foreground;
+  border-bottom: none;
+}
+
+/* --- Workspaces --- */
+#workspaces button {
+  padding: 0 5px;
+  color: #616161;
+}
+
+#workspaces button.active {
+  color: @primary;
+}
+
+#workspaces button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Modules --- */
+#custom-menu {
+  color: @primary;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 20px; /* Made menu icon slightly larger */
+}
+
+#clock {
+  color: @foreground;
+  font-size: 13px;
+}
+
+#battery,
+#pulseaudio,
+#network,
+#custom-power {
+  padding: 0 10px;
+  color: @foreground;
+}
+
+#pulseaudio{
+    font-size: 22px;
+    padding: 0 12px;
+}
+
+#network { 
+  color: #7dcfff;
+  font-size:19px;
+}
+
+#pulseaudio { color: #9ece6a; }
+#battery { color: #e0af68; }
+#custom-power { color: @alert; padding-right: 15px; }
+
+/* --- Tray Expander --- */
+#custom-expand-icon {
+  color: @foreground;
+  padding: 0 10px;
+}
+
+#tray {
+  background-color: transparent;
+  padding: 0 10px;
+  border-radius: 10px;
+  margin: 5px 0;
+}

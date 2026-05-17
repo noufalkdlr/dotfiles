@@ -1,0 +1,72 @@
+/* Wofi - Premium Glassmorphism Black (Alignej) */
+
+window {
+    margin: 0px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-family: "Cascadia Mono", monospace;
+    font-size: 14px;
+}
+
+#input {
+    margin: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+
+#input:focus {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    outline: none;
+    box-shadow: none;
+}
+
+#inner-box {
+    margin: 0px;
+    border: none;
+    background-color: transparent;
+}
+
+#outer-box {
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
+}
+
+#scroll {
+    margin: 0px 18px 18px 18px;
+    border: none;
+}
+
+#text {
+    margin: 5px;
+    border: none;
+    color: #ffffff;
+}
+
+#entry {
+    border: none;
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-bottom: 4px;
+}
+
+#entry:selected {
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    outline: none;
+}
+
+#entry:selected #text {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#img {
+    margin-right: 12px;
+    background-color: transparent;
+}

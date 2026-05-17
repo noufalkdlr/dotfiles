@@ -1,0 +1,14 @@
+# Folders to ignore
+wallpaper
+.git
+
+# Files to ignore
+README\.md
+LICENSE
+.*\.sh$
+.*\.txt$
+.stow-local-ignore
+
+# Hidden files (optional)
+\.gitignore
+\.DS_Store
