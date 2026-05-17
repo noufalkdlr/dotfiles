@@ -8,8 +8,8 @@
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function()
-	hl.exec_cmd("hyprpaper -c ~/.config/hypr/daemons/hyprpaper.conf")
-	hl.exec_cmd("hypridle -c ~/.config/hypr/daemons/hypridle.conf")
+	hl.exec_cmd("hyprpaper")
+	hl.exec_cmd("hypridle")
 	hl.exec_cmd("mako")
 	hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
