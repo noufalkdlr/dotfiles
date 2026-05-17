@@ -1,5 +1,6 @@
 android-studio
 better-control-git
+conspy
 figma-agent-linux
 fpm
 git-wizard
