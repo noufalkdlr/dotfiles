@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo "Starting System Backup... 📂"
 
 # Update Package List
@@ -19,6 +21,6 @@ echo "☁️ Pushing to GitHub..."
 git add .
 # Commit with current timestamp
 git commit -m "Auto-backup: $(date '+%Y-%m-%d %H:%M:%S')"
-git push
+git push origin main
 
 echo "All done! Backup secured in GitHub. ✅"
