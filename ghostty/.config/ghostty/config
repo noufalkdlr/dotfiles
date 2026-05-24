@@ -1,6 +1,6 @@
 # --- Ghostty Configuration ---
 
-theme = Atom
+theme = TokyoNight Night
 font-family = Cascadia Code NF SemiBold
 font-size = 12
 adjust-cell-height = 10%
@@ -25,6 +25,9 @@ palette = 14=#56B6C2
 # Selection
 selection-background = ffffff
 selection-foreground = 000000
+
+# --- Custom Cursor Trail Shader ---
+custom-shader = shaders/cursor_tail.glsl
 
 # Keybindings
 keybind = ctrl+shift+k=scroll_page_lines:-1

@@ -3,7 +3,7 @@
 ---------------------
 
 -- Set programs that you use
-local terminal = "kitty"
+local terminal = "ghostty"
 local fileManager = "nautilus"
 local menu = "wofi"
 local browser = "zen-browser"

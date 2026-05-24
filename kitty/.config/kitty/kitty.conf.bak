@@ -3,22 +3,40 @@ bold_font        auto
 italic_font      auto
 bold_italic_font auto
 
-font_size        12.0
+font_size        12
 modify_font cell_height 110%
 hide_window_decorations yes
-window_padding_width 15
+window_padding_width 10
 background_opacity 0.7
 # background_blur 50
-
+# placement_strategy top-left
 
 # Key Map
 map ctrl+shift+t new_tab_with_cwd
 map ctrl+shift+n new_os_window_with_cwd
 
+# --- Vim-like Scrolling ---
+map ctrl+shift+k scroll_line_up
+map ctrl+shift+j scroll_line_down
 
+# --- Cursor Trail ---
+cursor_trail 1
+cursor_trail_decay 0.1 0.4
+cursor_trail_start_threshold 2
 
-# BEGIN_KITTY_THEME
-# Base2Tone Pool Dark
-include current-theme.conf
-# END_KITTY_THEME
+# # BEGIN_KITTY_THEME
+# # Atom
+# include current-theme.conf
+# # END_KITTY_THEME
 # background #000000
+#
+# color8 #b0b0b0
+#
+# # selection color
+# selection_background #ffffff
+# selection_foreground #000000
+#
+# # Symbolic Links (Cyan/Turquoise)
+# color6  #56B6C2
+# color14 #56B6C2
+#
