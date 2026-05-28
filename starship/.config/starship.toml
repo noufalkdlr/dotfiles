@@ -21,7 +21,7 @@ $time\
 \n$character"""
 
 [directory]
-style = "fg:#041b27 bg:#1793D1"
+style = "fg:#000f21 bg:#1793D1"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
