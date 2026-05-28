@@ -31,14 +31,6 @@ else
   echo "Error: pkglist.txt not found! ❌"
 fi
 
-# Restore GNOME settings
-if [ -f "gnome-settings.ini" ]; then
-  echo "Loading GNOME settings..."
-  dconf load / <gnome-settings.ini
-else
-  echo "Warning: gnome-settings.ini not found, skipping..."
-fi
-
 # Enable Services
 echo "Enabling Services... 🔌"
 sudo systemctl enable NetworkManager
