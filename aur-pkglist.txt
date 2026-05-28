@@ -1,5 +1,6 @@
 android-studio
 better-control-git
+bibata-cursor-theme-bin
 conspy
 figma-agent-linux
 fpm

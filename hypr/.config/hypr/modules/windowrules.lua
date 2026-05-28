@@ -105,8 +105,19 @@ hl.window_rule({
 -- File Chooser Dialogs (Open/Save)
 hl.window_rule({
 	name = "file-picker",
-	match = { title = "^(Open File|Open|Save As)$" },
+	match = {
+		class = "xdg-desktop-portal-gtk",
+	},
 	float = true,
 	center = true,
 	size = { 1200, 700 },
+})
+
+-- Blur Rules
+
+-- GNOME Nautilus
+hl.window_rule({
+	name = "nautilus-blur",
+	match = { class = "org.gnome.Nautilus" },
+	opacity = "0.90 0.95",
 })

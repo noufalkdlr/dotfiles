@@ -109,6 +109,7 @@ noto-fonts-extra
 npm
 ntfs-3g
 nvidia-open-dkms
+nwg-look
 obs-studio
 obsidian
 pacman-contrib
