@@ -69,6 +69,9 @@ alias cashevide-server='ssh root@46.225.234.48'
 # Github Copilot
 alias ai="gh copilot"
 
+# Gemma 4 Copilot
+alias gemma="docker start open-webui"
+
 # zoxide
 eval "$(zoxide init zsh)"
 
@@ -85,12 +88,3 @@ if [ $(ls /dev/pts | grep -c '^[0-9]') -eq 1 ]; then
     fastfetch
 fi
 
-
-
-
-
-
-
-
-# -------TEMP--------
-alias lfs="ssh noufal@192.168.122.113"
