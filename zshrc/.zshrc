@@ -64,7 +64,7 @@ alias env='source .venv/bin/activate'
 alias hypr='nvim ~/dotfiles/hypr/.config/hypr'
 
 # Cashevide Server
-alias cashevide-server='ssh root@api.cashevide.com'
+alias cashevide-server='ssh root@46.225.234.48'
 
 # Github Copilot
 alias ai="gh copilot"
