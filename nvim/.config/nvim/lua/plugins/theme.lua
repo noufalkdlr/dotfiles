@@ -1,5 +1,5 @@
-local primary_bg = "#090d17"
-local split_color = "#191c21"
+local primary_bg = "#0A0C0F"
+local split_color = "#13171f"
 local selection_color = "#141b2b"
 local highlight_color = "#141b2b"
 
@@ -17,6 +17,9 @@ return {
         Normal = { bg = primary_bg },
         NormalFloat = { bg = primary_bg },
         NormalNC = { bg = primary_bg },
+
+        LineNr = { fg = "#272B2F" },
+        CursorLineNr = { fg = "#C578DC", bold = true },
 
         Visual = { bg = selection_color },
         NeoTreeDirectoryName = { fg = "#abb2bf" },

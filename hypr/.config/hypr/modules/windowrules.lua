@@ -48,14 +48,21 @@ hl.window_rule({
 	float = true,
 })
 
--- Floating Window Rules
-
 -- Better Control
 hl.window_rule({
 	name = "better-control-popup",
 	match = { class = "better_control.py" },
 	float = true,
 	size = { 1000, 500 },
+	center = true,
+})
+
+-- Cosmic Settings
+hl.window_rule({
+	name = "cosmic-settings-popup",
+	match = { class = "com.system76.CosmicSettings" },
+	float = true,
+	size = { 1200, 700 },
 	center = true,
 })
 
@@ -119,5 +126,12 @@ hl.window_rule({
 hl.window_rule({
 	name = "nautilus-blur",
 	match = { class = "org.gnome.Nautilus" },
+	opacity = "0.90 0.95",
+})
+
+-- Cosmic Settings
+hl.window_rule({
+	name = "cosmic-files-blur",
+	match = { class = "com.system76.CosmicFiles" },
 	opacity = "0.90 0.95",
 })

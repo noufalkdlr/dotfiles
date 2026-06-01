@@ -31,7 +31,7 @@ palette = 15=#e3e3e3
 # selection-foreground = 000000
 
 # --- Custom Cursor Trail Shader ---
-custom-shader = shaders/cursor_tail.glsl
+custom-shader = shaders/cursor_sweep.glsl
 
 # Keybindings
 keybind = ctrl+shift+k=scroll_page_lines:-1

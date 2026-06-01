@@ -7,7 +7,7 @@ local terminal = "ghostty"
 local fileManager = "nautilus"
 local menu = "wofi"
 local browser = "zen-browser"
-local control = "better-control"
+local control = "cosmic-settings"
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -68,7 +68,7 @@ hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
--- Better Control (SUPER + SHIFT + C)
+-- Cosmic-settings (SUPER + SHIFT + C)
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd(control))
 
 -- Capture Region (SUPER + SHIFT + P)

@@ -12,7 +12,7 @@ hl.config({
 
 		col = {
 			active_border = { colors = { "rgba(999999ee)", "rgba(e0e0e0ee)" }, angle = 45 },
-			inactive_border = "rgba(595959aa)",
+			inactive_border = { colors = { "rgba(2c2c2cee)", "rgba(4a4a4aee)" }, angle = 45 },
 		},
 
 		resize_on_border = false,
@@ -45,6 +45,15 @@ hl.config({
 	animations = {
 		enabled = true,
 	},
+})
+
+-- Floating windows border
+hl.window_rule({
+	name = "floating-windows-no-border",
+	match = { float = true },
+
+	border_size = 0,
+	border_color = { colors = { "rgba(2c2c2cee)", "rgba(4a4a4aee)" }, angle = 45 },
 })
 
 -- Blur Waybar
