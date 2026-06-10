@@ -26,7 +26,21 @@ hl.bind(
 
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + G", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + D", function()
+	local win = hl.get_active_window()
+
+	if win and not win.floating then
+		hl.dispatch(hl.dsp.window.float({ action = "set" }))
+		hl.dispatch(hl.dsp.window.resize({
+			x = 1200,
+			y = 700,
+			exact = true,
+		}))
+		hl.dispatch(hl.dsp.window.center())
+	else
+		hl.dispatch(hl.dsp.window.float({ action = "unset" }))
+	end
+end)
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + ALT + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + T", hl.dsp.layout("togglesplit")) -- dwindle only

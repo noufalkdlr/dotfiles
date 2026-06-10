@@ -23,8 +23,8 @@ cursor-color = e3e3e3
 palette = 6=#00E3FF
 palette = 7=#e3e3e3
 palette = 15=#e3e3e3
-# palette = 8=#b0b0b0
-# palette = 14=#56B6C2
+palette = 8=#b0b0b0
+palette = 14=#56B6C2
 
 # # Selection
 # selection-background = ffffff
