@@ -1,5 +1,18 @@
 # Wallpaper Setup
 
-To automatically set the wallpaper, place your desired image in this folder and rename it to **bg.jpg**.
+You can store wallpaper images in any directory.
 
-The script is configured to load the wallpaper from: `~/dotfiles/wallpaper/bg.jpg`
+To change the wallpaper, navigate to the directory containing the image and run:
+
+```bash
+change-wallpaper <wallpaper-file>
+```
+
+Example:
+
+```bash
+cd ~/Pictures/Wallpapers
+change-wallpaper cyberpunk.jpg
+```
+
+The wallpaper will be applied immediately without rebooting or restarting Hyprland.

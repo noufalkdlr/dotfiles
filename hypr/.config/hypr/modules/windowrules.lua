@@ -120,6 +120,15 @@ hl.window_rule({
 	size = { 1200, 700 },
 })
 
+-- Zen browser
+hl.window_rule({
+	name = "zen-browser",
+	match = { class = "zen" },
+	size = { 1600, 900 },
+	-- float = true,
+	center = true,
+})
+
 -- Blur Rules
 
 -- GNOME Nautilus

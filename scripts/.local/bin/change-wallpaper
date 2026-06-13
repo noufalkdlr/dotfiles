@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Usage: change-wallpaper <wallpaper-file>"
+  exit 1
+fi
+
+WALLPAPER_PATH="$(realpath "$1" 2>/dev/null)"
+
+if [ ! -f "$WALLPAPER_PATH" ]; then
+  echo "Wallpaper not found: $1"
+  exit 1
+fi
+
+cat >~/dotfiles/hypr/.config/hypr/hyprpaper.conf <<EOF
+splash = false
+
+wallpaper {
+    monitor =
+    path = $WALLPAPER_PATH
+    fit_mode = cover
+}
+EOF
+
+pkill hyprpaper 2>/dev/null
+hyprpaper >/dev/null 2>&1 &
