@@ -4,7 +4,7 @@ echo "Setting up dotfiles..."
 
 # Create base directories to prevent GNU Stow folder folding
 echo "📁 Creating necessary base directories..."
-mkdir -p ~/.local ~/.local/share ~/.local/bin ~/.config
+mkdir -p ~/.local ~/.local/share ~/.local/bin ~/.config ~/.config/systemd/user
 
 # Link configurations
 echo "Stowing dotfiles..."
@@ -22,6 +22,10 @@ for folder in */; do
   echo "🔗 Linking $folder..."
   stow "$folder"
 done
+
+# Reload user systemd units after stowing dotfiles
+echo "Reloading user systemd units... 🔄"
+systemctl --user daemon-reload
 
 # Install packages
 if [ -f "pkglist.txt" ]; then

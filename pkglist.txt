@@ -3,7 +3,6 @@ adw-gtk-theme
 android-tools
 archlinux-xdg-menu
 aria2
-baobab
 base
 base-devel
 bat
@@ -31,10 +30,8 @@ dotnet-sdk-8.0
 dpkg
 edk2-ovmf
 efibootmgr
-evince
 ex-vi-compat
 exfatprogs
-extension-manager
 fastfetch
 fd
 feh
@@ -48,10 +45,6 @@ gimp
 git
 git-filter-repo
 github-cli
-gnome-disk-utility
-gnome-sound-recorder
-gnome-system-monitor
-gnome-themes-extra
 graphviz
 grim
 gst-plugin-pipewire
@@ -81,7 +74,6 @@ linux-firmware
 linux-headers
 linux-zen
 linux-zen-headers
-loupe
 mako
 meld
 mission-center
@@ -143,7 +135,6 @@ smartmontools
 sof-firmware
 starship
 stow
-sushi
 telegram-desktop
 tmux
 transmission-gtk
