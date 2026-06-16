@@ -1,84 +1,117 @@
-/* Tokyo Night Colors defined manually */
-@define-color background rgba(0, 0, 0, 0.8);
-@define-color foreground #ffffff;
-@define-color primary #ffffff;
-@define-color secondary #9ece6a;
-@define-color alert #f7768e;
-@define-color disabled #414868;
-
 * {
+  min-height: 0;
   border: none;
   border-radius: 0;
-  min-height: 0;
-  font-family: 'Cascadia Mono', 'Noto Sans Malayalam', sans-serif;
-  font-size: 16px;
-  font-weight: bold;
+  box-shadow: none;
+  text-shadow: none;
+
+  font-family:
+    "CaskaydiaCove Nerd Font",
+    "Cascadia Code",
+    "Cascadia Mono",
+    monospace;
+
+  font-size: 13px;
+  font-weight: 500;
 }
 
 window#waybar {
-  background-color: @background;
-  color: @foreground;
-  border-bottom: none;
+  background: #000000;
+  color: #dcdcdc;
 }
 
-/* --- Workspaces --- */
+/* Common modules */
+#custom-arch,
+#workspaces,
+#clock,
+#custom-wifi,
+#custom-sound,
+#custom-power {
+  background: transparent;
+  color: #dcdcdc;
+  margin: 0;
+  padding: 0 8px;
+}
+
+/* Arch icon */
+#custom-arch {
+  padding-left: 13px;
+  padding-right: 10px;
+
+  font-size: 15px;
+  color: #ffffff;
+}
+
+/* Workspaces */
+#workspaces {
+  padding: 0;
+}
+
 #workspaces button {
-  padding: 0 5px;
-  color: #616161;
-}
+  min-width: 14px;
 
-#workspaces button.active {
-  color: @primary;
+  margin: 0 3px;
+  padding: 0 2px;
+
+  background: transparent;
+  color: #333333;
+
+  font-size: 9px;
+
+  transition: color 120ms ease;
 }
 
 #workspaces button:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: #aaaaaa;
 }
 
-/* --- Modules --- */
-#custom-menu {
-  color: @primary;
-  padding-left: 10px;
-  padding-right: 10px;
-  font-size: 20px; /* Made menu icon slightly larger */
+#workspaces button.empty {
+  color: #333333;
 }
 
+#workspaces button.urgent {
+  color: #ff5555;
+}
+
+/* Keep this AFTER .empty */
+#workspaces button.active {
+  color: #ffffff;
+}
+
+/* Active empty workspace should still be white */
+#workspaces button.active.empty {
+  color: #ffffff;
+}
+
+/* Clock */
 #clock {
-  color: @foreground;
-  font-size: 13px;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.2px;
 }
 
-#battery,
-#pulseaudio,
-#network,
+/* Right icons */
+#custom-wifi,
+#custom-sound,
 #custom-power {
-  padding: 0 10px;
-  color: @foreground;
+  padding: 0 5px;
+
+  font-size: 12px;
+  color: #cfcfcf;
+
+  transition: color 120ms ease;
 }
 
-#pulseaudio{
-    font-size: 22px;
-    padding: 0 12px;
+/* Gap between right icons */
+#custom-wifi {
+  margin-right: 14px;
 }
 
-#network { 
-  color: #7dcfff;
-  font-size:19px;
+#custom-sound {
+  margin-right: 14px;
 }
 
-#pulseaudio { color: #9ece6a; }
-#battery { color: #e0af68; }
-#custom-power { color: @alert; padding-right: 15px; }
-
-/* --- Tray Expander --- */
-#custom-expand-icon {
-  color: @foreground;
-  padding: 0 10px;
-}
-
-#tray {
-  background-color: transparent;
-  padding: 0 10px;
-  border-radius: 10px;
-  margin: 5px 0;
+#custom-power {
+  padding-right: 13px;
 }

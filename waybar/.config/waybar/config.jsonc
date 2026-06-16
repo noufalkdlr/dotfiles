@@ -1,124 +1,65 @@
 {
-  "reload_style_on_change": true,
   "layer": "top",
   "position": "top",
+  "height": 30,
   "spacing": 0,
-  "height": 34, // Increased height slightly due to larger icons
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": 0,
   "modules-left": [
-    "custom/menu",
+    "custom/arch",
     "hyprland/workspaces"
   ],
   "modules-center": [
     "clock"
   ],
   "modules-right": [
-    "tray",
-    "network",
-    "pulseaudio",
-    "battery",
+    "custom/wifi",
+    "custom/sound",
     "custom/power"
   ],
-  // --- Workspaces ---
+  "custom/arch": {
+    "exec": "printf '󰣇'",
+    "interval": "once",
+    "tooltip": false
+  },
   "hyprland/workspaces": {
-    "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
-      "default": "",
-      "active": "󱓻"
+      "1": "●",
+      "2": "●",
+      "3": "●",
+      "4": "●",
+      "5": "●",
+      "active": "●",
+      "default": "●",
+      "empty": "●",
+      "urgent": "●"
     },
+    "on-click": "activate",
+    "all-outputs": false,
+    "active-only": false,
     "persistent-workspaces": {
       "*": 5
     }
   },
-  // --- Custom Menu ---
-  "custom/menu": {
-    "format": "󰣇",
-    "on-click": "wofi --show drun",
-    "tooltip": false
-  },
-  // --- Clock ---
   "clock": {
-    "format": "{:%H:%M}",
-    "format-alt": "{:%A, %B %d, %Y}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    "format": "{:%I:%M %p}",
+    "tooltip-format": "{:%A, %d %B %Y}"
   },
-  // --- Network ---
-  "network": {
-    "format-wifi": "{icon}",
-    "format-ethernet": "󰀂",
-    "format-disconnected": "󰤮",
-    "format-icons": [
-      "󰤯",
-      "󰤟",
-      "󰤢",
-      "󰤥",
-      "󰤨"
-    ],
-    "tooltip-format": "{essid}",
-    "on-click": "better-control"
+  "custom/wifi": {
+    "exec": "printf ''",
+    "interval": "once",
+    "tooltip": false
   },
-  // --- Audio ---
-  "pulseaudio": {
-    "format": "{icon}",
-    "format-muted": "",
-    "format-icons": {
-      "default": [
-        "",
-        "",
-        ""
-      ]
-    },
-    "on-click": "pavucontrol"
+  "custom/sound": {
+    "exec": "printf ''",
+    "interval": "once",
+    "tooltip": false
   },
-  // --- Battery ---
-  "battery": {
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{icon} {capacity}%",
-    "format-charging": "⚡ {capacity}%",
-    "format-icons": [
-      "󰁺",
-      "󰁻",
-      "󰁼",
-      "󰁽",
-      "󰁾",
-      "󰁿",
-      "󰂀",
-      "󰂁",
-      "󰂂",
-      "󰁹"
-    ]
-  },
-  // --- Power Button ---
   "custom/power": {
-    "format": "⏻",
-    "on-click": "better-control",
+    "exec": "printf '⏻'",
+    "interval": "once",
     "tooltip": false
-  },
-  // --- Tray Expander ---
-  "group/tray-expander": {
-    "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 500,
-      "children-class": "tray-child",
-      "transition-left-to-right": false
-    },
-    "modules": [
-      "custom/expand-icon",
-      "tray"
-    ]
-  },
-  "custom/expand-icon": {
-    "format": " ",
-    "tooltip": false
-  },
-  "tray": {
-    "icon-size": 18, // Increased tray icon size (14 -> 18)
-    "spacing": 10,
-    "ignore-list": [
-      "nm-applet"
-    ]
   }
 }
