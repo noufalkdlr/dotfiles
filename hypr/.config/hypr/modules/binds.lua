@@ -6,7 +6,7 @@ local helpers = require("modules.helpers.window")
 
 -- Set programs that you use
 local terminal = "ghostty"
-local fileManager = "cosmic-files"
+local fileManager = "nautilus"
 local menu = "wofi"
 local browser = "zen-browser"
 local control = "cosmic-settings"

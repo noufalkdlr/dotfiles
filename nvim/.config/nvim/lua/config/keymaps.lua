@@ -11,17 +11,13 @@ vim.keymap.set("n", "<leader>cx", function()
 
   vim.cmd("write")
 
-  local fix_output = vim.fn.system({
+  vim.fn.system({
     "ruff",
     "check",
     "--fix",
+    "--exit-zero",
     file,
   })
-
-  if vim.v.shell_error ~= 0 then
-    vim.notify(fix_output, vim.log.levels.ERROR)
-    return
-  end
 
   local format_output = vim.fn.system({
     "ruff",
@@ -34,6 +30,18 @@ vim.keymap.set("n", "<leader>cx", function()
     return
   end
 
+  local check_output = vim.fn.system({
+    "ruff",
+    "check",
+    file,
+  })
+
   vim.cmd("edit!")
+
+  if vim.v.shell_error ~= 0 then
+    vim.notify(check_output, vim.log.levels.WARN)
+    return
+  end
+
   vim.notify("Ruff fixed and formatted")
 end, { desc = "Ruff Fix + Format" })

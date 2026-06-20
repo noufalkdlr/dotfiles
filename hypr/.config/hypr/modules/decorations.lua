@@ -8,7 +8,7 @@ hl.config({
 		gaps_in = 5,
 		gaps_out = 15,
 
-		border_size = 2,
+		border_size = 1,
 
 		col = {
 			active_border = { colors = { "rgba(999999ee)", "rgba(e0e0e0ee)" }, angle = 45 },
@@ -21,7 +21,7 @@ hl.config({
 	},
 
 	decoration = {
-		rounding = 10,
+		rounding = 5,
 		rounding_power = 2,
 
 		active_opacity = 1.0,
@@ -115,7 +115,6 @@ hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" 
 
 -- Smart Gaps
 hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
-hl.workspace_rule({ workspace = "f[1]", gaps_out = 0, gaps_in = 0 })
 
 hl.window_rule({
 	name = "no-gaps-wtv1",
@@ -124,9 +123,9 @@ hl.window_rule({
 	rounding = 0,
 })
 
-hl.window_rule({
-	name = "no-gaps-f1",
-	match = { float = false, workspace = "f[1]" },
-	border_size = 0,
-	rounding = 0,
-})
+-- hl.window_rule({
+-- 	name = "no-gaps-f1",
+-- 	match = { float = false, workspace = "f[1]" },
+-- 	border_size = 0,
+-- 	rounding = 0,
+-- })

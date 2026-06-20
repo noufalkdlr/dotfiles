@@ -17,8 +17,6 @@ chromium
 cliphist
 cmatrix
 code
-cosmic-files
-cosmic-settings
 cpio
 dbeaver
 dnsmasq
@@ -45,6 +43,7 @@ gimp
 git
 git-filter-repo
 github-cli
+gnome-calculator
 graphviz
 grim
 gst-plugin-pipewire
@@ -132,6 +131,7 @@ scrcpy
 sddm
 slurp
 smartmontools
+socat
 sof-firmware
 starship
 stow
