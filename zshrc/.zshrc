@@ -69,9 +69,6 @@ alias cashevide-server='ssh root@46.225.234.48'
 # Github Copilot
 alias ai="gh copilot"
 
-# Gemma 4 Copilot
-alias gemma="docker start open-webui"
-
 # zoxide
 eval "$(zoxide init zsh)"
 

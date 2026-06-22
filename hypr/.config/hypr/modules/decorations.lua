@@ -6,7 +6,13 @@
 hl.config({
 	general = {
 		gaps_in = 5,
-		gaps_out = 15,
+
+		gaps_out = {
+			top = 40,
+			right = 10,
+			bottom = 10,
+			left = 10,
+		},
 
 		border_size = 1,
 
@@ -123,9 +129,9 @@ hl.window_rule({
 	rounding = 0,
 })
 
--- hl.window_rule({
--- 	name = "no-gaps-f1",
--- 	match = { float = false, workspace = "f[1]" },
--- 	border_size = 0,
--- 	rounding = 0,
--- })
+hl.window_rule({
+	name = "no-gaps-f1",
+	match = { float = false, workspace = "f[1]" },
+	border_size = 0,
+	rounding = 0,
+})

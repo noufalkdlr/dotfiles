@@ -1,28 +1,22 @@
 {
-  "layer": "top",
+  "layer": "bottom",
   "position": "top",
   "height": 30,
+  "exclusive": false,
   "spacing": 0,
   "margin-top": 0,
   "margin-left": 0,
   "margin-right": 0,
-  "modules-left": [
-    "custom/arch",
-    "hyprland/workspaces"
-  ],
-  "modules-center": [
-    "clock"
-  ],
-  "modules-right": [
-    "custom/wifi",
-    "custom/sound",
-    "custom/power"
-  ],
+
+  "modules-left": ["custom/arch", "hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["custom/wifi", "custom/sound", "custom/power"],
   "custom/arch": {
     "exec": "printf '󰣇'",
     "interval": "once",
-    "tooltip": false
+    "tooltip": false,
   },
+
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
@@ -34,32 +28,32 @@
       "active": "●",
       "default": "●",
       "empty": "●",
-      "urgent": "●"
+      "urgent": "●",
     },
     "on-click": "activate",
     "all-outputs": false,
     "active-only": false,
     "persistent-workspaces": {
-      "*": 5
-    }
+      "*": 5,
+    },
   },
   "clock": {
     "format": "{:%I:%M %p}",
-    "tooltip-format": "{:%A, %d %B %Y}"
+    "tooltip-format": "{:%A, %d %B %Y}",
   },
   "custom/wifi": {
     "exec": "printf ''",
     "interval": "once",
-    "tooltip": false
+    "tooltip": false,
   },
   "custom/sound": {
     "exec": "printf ''",
     "interval": "once",
-    "tooltip": false
+    "tooltip": false,
   },
   "custom/power": {
     "exec": "printf '⏻'",
     "interval": "once",
-    "tooltip": false
-  }
+    "tooltip": false,
+  },
 }
