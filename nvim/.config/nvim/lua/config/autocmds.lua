@@ -25,3 +25,32 @@
 --     })
 --   end,
 -- })
+
+-- Workaround: Auto-select the "dev" Kulala environment on startup.
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "http", "rest" },
+  callback = function()
+    vim.schedule(function()
+      pcall(function()
+        require("kulala").set_selected_env("dev")
+      end)
+    end)
+  end,
+})
+
+-- Make <C-h> return to the HTTP request window instead of switching Kulala tabs.
+vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
+  pattern = "kulala_ui",
+  callback = function(event)
+    vim.defer_fn(function()
+      vim.keymap.set("n", "<C-h>", function()
+        vim.cmd("wincmd h")
+      end, {
+        buffer = event.buf,
+        silent = true,
+        nowait = true,
+        desc = "Move to left window",
+      })
+    end, 100)
+  end,
+})

@@ -1,5 +1,6 @@
 android-studio
 bibata-cursor-theme-bin
+claude-desktop
 figma-agent-linux
 fpm
 git-wizard

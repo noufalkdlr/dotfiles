@@ -44,6 +44,7 @@ git
 git-filter-repo
 github-cli
 gnome-calculator
+gnome-text-editor
 graphviz
 grim
 gst-plugin-pipewire
@@ -52,6 +53,8 @@ htop
 hypridle
 hyprland
 hyprpaper
+hyprpicker
+hyprshot
 imagemagick
 imv
 inetutils
@@ -142,6 +145,7 @@ ttf-indic-otf
 unzip
 uv
 v4l2loopback-dkms
+valgrind
 vim
 virt-manager
 virtualbox

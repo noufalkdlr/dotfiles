@@ -26,10 +26,10 @@ hl.bind(
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
 
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + D", helpers.toggle_float_centered)
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + ALT + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + T", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen(1))
@@ -77,7 +77,7 @@ hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd(control))
 hl.bind(
 	mainMod .. " + SHIFT + P",
 	hl.dsp.exec_cmd(
-		[[mkdir -p ~/Pictures/Screenshots && grim -g "$(slurp -b 00000080 -c ffffffff)" - | tee ~/Pictures/Screenshots/Screenshot-$(date +'%s').png | wl-copy && notify-send -i camera-photo "Screenshot Taken" "Region saved to ~/Pictures/Screenshots/"]]
+		[[mkdir -p ~/Pictures/Screenshots && (hyprpicker -rz &) && sleep 0.2 && grim -g "$(slurp -b 00000080 -c ffffffff)" - | tee ~/Pictures/Screenshots/Screenshot-$(date +'%s').png | wl-copy && pkill hyprpicker && notify-send -i camera-photo "Screenshot Taken" "Region saved to ~/Pictures/Screenshots/"]]
 	)
 )
 

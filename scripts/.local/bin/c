@@ -12,7 +12,7 @@ tmux send-keys -t cashevide:frontend 'cd ~/Projects/cashevide-frontend/ && nvim 
 
 # Window 3 (kulala): Create a new window, navigate to the frontend folder, and open LazyVim
 tmux new-window -t cashevide -n 'kulala'
-tmux send-keys -t cashevide:kulala 'cd ~/Projects/cashevide-api/api_tests/ && nvim .' C-m
+tmux send-keys -t cashevide:kulala 'cd ~/Projects/cashevide-api/api_tests/kulala/ && nvim .' C-m
 
 # Window 4 (servers): Create a new window to run Docker logs and Expo
 tmux new-window -t cashevide -n 'servers'
