@@ -70,6 +70,7 @@ less
 libpulse
 libva-nvidia-driver
 libvirt
+libwebp-utils
 linux
 linux-firmware
 linux-headers

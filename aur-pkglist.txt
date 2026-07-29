@@ -10,6 +10,8 @@ otf-manjari
 paru
 pyinstaller
 python-inquirer
+python-questionary
+qrify
 tor-browser-alpha-bin
 watchman-bin
 wofi-emoji
