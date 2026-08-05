@@ -5,7 +5,7 @@ echo "Starting System Backup... 📂"
 
 # Update Package List (excluding hardware-specific packages)
 echo "📝 Exporting package list..."
-pacman -Qnqe | grep -vE '^(nvidia-open-dkms|libva-nvidia-driver|intel-ucode|linux|linux-firmware|linux-headers|linux-zen|linux-zen-headers|sof-firmware)$' >pkglist.txt
+pacman -Qnqe | grep -vE '^(nvidia-open-dkms|libva-nvidia-driver|intel-ucode|amd-ucode|xf86-video-amdgpu|xf86-video-intel|vulkan-radeon|lib32-vulkan-radeon|vulkan-intel|lib32-vulkan-intel|linux|linux-firmware|linux-headers|linux-zen|linux-zen-headers|sof-firmware)$' >pkglist.txt
 
 # Update yay Package List
 echo " Exporting yay package list..."
