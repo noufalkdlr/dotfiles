@@ -21,6 +21,10 @@ else
   echo "Error: pkglist.txt not found! ❌"
 fi
 
+# Install yay and AUR packages
+echo "Setting up yay and AUR packages... 📦"
+python3 ./setup-scripts/yay.py
+
 # Enable Services
 echo "Enabling Services... 🔌"
 sudo systemctl enable NetworkManager
