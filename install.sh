@@ -2,6 +2,10 @@
 
 echo "Setting up dotfiles..."
 
+# Ensure stow is present before linking configs
+echo "📦 Ensuring stow is installed..."
+sudo pacman -S --needed --noconfirm stow
+
 # Create base directories to prevent GNU Stow folder folding
 echo "📁 Creating necessary base directories..."
 mkdir -p ~/.local ~/.local/share ~/.local/bin ~/.config ~/.config/systemd/user
@@ -24,6 +28,10 @@ fi
 # Install yay and AUR packages
 echo "Setting up yay and AUR packages... 📦"
 python3 ./setup-scripts/yay.py
+
+# Install fonts
+echo "Setting up fonts... 🔤"
+./setup-scripts/setup_fonts.sh
 
 # Enable Services
 echo "Enabling Services... 🔌"
