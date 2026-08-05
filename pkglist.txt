@@ -58,7 +58,6 @@ hyprshot
 imagemagick
 imv
 inetutils
-intel-ucode
 iptables
 iw
 iwd
@@ -68,14 +67,8 @@ kitty
 lazygit
 less
 libpulse
-libva-nvidia-driver
 libvirt
 libwebp-utils
-linux
-linux-firmware
-linux-headers
-linux-zen
-linux-zen-headers
 mako
 meld
 mission-center
@@ -96,7 +89,6 @@ noto-fonts-emoji
 noto-fonts-extra
 npm
 ntfs-3g
-nvidia-open-dkms
 nwg-look
 obs-studio
 obsidian
@@ -135,7 +127,6 @@ sddm
 slurp
 smartmontools
 socat
-sof-firmware
 starship
 stow
 telegram-desktop
