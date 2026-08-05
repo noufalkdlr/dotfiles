@@ -1,12 +1,15 @@
 #!/bin/bash
 
+# Always run from dotfiles root
+cd "$(dirname "${BASH_SOURCE[0]}")/.." || exit 1
+
 echo "🧹 Unstowing dotfiles..."
 for folder in */; do
   folder=${folder%/}
 
   # Skip specific folders using case
   case "$folder" in
-  .git | wallpaper)
+  .git | wallpaper | setup-scripts)
     echo "⏭️  Skipping $folder..."
     continue
     ;;

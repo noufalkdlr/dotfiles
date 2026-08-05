@@ -7,21 +7,7 @@ echo "📁 Creating necessary base directories..."
 mkdir -p ~/.local ~/.local/share ~/.local/bin ~/.config ~/.config/systemd/user
 
 # Link configurations
-echo "Stowing dotfiles..."
-for folder in */; do
-  folder=${folder%/}
-
-  # Skip specific folders using case
-  case "$folder" in
-  .git | wallpaper)
-    echo "⏭️  Skipping $folder..."
-    continue
-    ;;
-  esac
-
-  echo "🔗 Linking $folder..."
-  stow "$folder"
-done
+./setup-scripts/stow.sh
 
 # Reload user systemd units after stowing dotfiles
 echo "Reloading user systemd units... 🔄"
