@@ -1,4 +1,4 @@
-#!/bin/bash
+y#!/bin/bash
 
 echo "Setting up dotfiles..."
 
