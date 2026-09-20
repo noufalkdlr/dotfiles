@@ -5,7 +5,6 @@ figma-agent-linux
 fpm
 git-wizard
 localsend-bin
-opera
 otf-manjari
 paru
 pyinstaller
@@ -13,6 +12,7 @@ python-inquirer
 python-questionary
 qrify
 tor-browser-alpha-bin
+visual-studio-code-bin
 watchman-bin
 wofi-emoji
 yay

@@ -16,7 +16,6 @@ chafa
 chromium
 cliphist
 cmatrix
-code
 cpio
 dbeaver
 dnsmasq
