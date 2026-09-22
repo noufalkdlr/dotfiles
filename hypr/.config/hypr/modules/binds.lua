@@ -29,7 +29,7 @@ hl.bind(
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + D", helpers.toggle_float_centered)
-hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(menu))
+hl.bind("ALT + SPACE", hl.dsp.exec_cmd("pgrep -x wofi && pkill wofi || wofi"))
 hl.bind(mainMod .. " + ALT + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + T", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen(1))
