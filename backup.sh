@@ -13,7 +13,7 @@ pacman -Qmqe >aur-pkglist.txt
 
 # Push to GitHub
 echo "☁️ Pushing to GitHub..."
-git add .
+git add -A
 
 if ! git diff-index --quiet HEAD; then
   git commit -m "Auto-backup: $(date '+%Y-%m-%d %H:%M:%S')"

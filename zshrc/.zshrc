@@ -85,3 +85,4 @@ if [ $(ls /dev/pts | grep -c '^[0-9]') -eq 1 ]; then
     fastfetch
 fi
 
+export PATH=~/.npm-global/bin:$PATH
