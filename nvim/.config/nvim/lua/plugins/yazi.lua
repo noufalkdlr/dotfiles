@@ -10,7 +10,4 @@ return {
       desc = "Open the file manager",
     },
   },
-  opts = {
-    open_for_directories = true,
-  },
 }
