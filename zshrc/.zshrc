@@ -14,6 +14,10 @@ export BROWSER=firefox
 # Local bin directory for custom scripts
 export PATH="$HOME/.local/bin:$PATH"
 
+
+export PATH=~/.npm-global/bin:$PATH
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Android Studio Configuration
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -85,4 +89,3 @@ if [ $(ls /dev/pts | grep -c '^[0-9]') -eq 1 ]; then
     fastfetch
 fi
 
-export PATH=~/.npm-global/bin:$PATH
