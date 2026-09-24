@@ -8,7 +8,7 @@ local helpers = require("modules.helpers.window")
 local terminal = "ghostty"
 local fileManager = "nautilus"
 local menu = "wofi"
-local browser = "zen-browser"
+local browser = "firefox-nightly"
 local control = "cosmic-settings"
 
 ---------------------

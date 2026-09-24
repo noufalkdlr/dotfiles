@@ -2,6 +2,7 @@ android-studio
 bibata-cursor-theme-bin
 claude-desktop
 figma-agent-linux
+firefox-nightly-bin
 fpm
 git-wizard
 localsend-bin
