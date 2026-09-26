@@ -62,20 +62,6 @@ hl.window_rule({
 	border_color = { colors = { "rgba(2c2c2cee)", "rgba(4a4a4aee)" }, angle = 45 },
 })
 
--- Blur Waybar
-hl.layer_rule({
-	name = "blur-waybar",
-	match = { namespace = "waybar" },
-	blur = true,
-})
-
--- Blur Mako
-hl.layer_rule({
-	name = "blur-mako",
-	match = { namespace = "mako" },
-	blur = true,
-})
-
 -- Blur Notifications
 hl.layer_rule({
 	name = "blur-notifications",
