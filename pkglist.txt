@@ -90,7 +90,6 @@ noto-fonts-extra
 npm
 ntfs-3g
 nwg-look
-nwg-panel
 obs-studio
 obsidian
 pacman-contrib
