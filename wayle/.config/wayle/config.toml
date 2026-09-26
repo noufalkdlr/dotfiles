@@ -1,1 +1,6 @@
-# Wayle configuration file
+[styling.palette]
+bg = "#000000"
+surface = "#0a0a0a"
+elevated = "#161616"
+fg = "#e8e8e8"
+fg-muted = "#8a8a8a"
