@@ -23,7 +23,7 @@ center = ["clock"]
 right = ["network", "bluetooth", "volume"]
 
 [styling]
-rounding = "none"
+rounding = "md"
 
 [styling.palette]
 bg = "#000000"

@@ -7,6 +7,9 @@ button-icon-size = 0.75
 button-rounding = "full"
 dropdown-opacity = 100
 
+[modules.dashboard]
+border-color = "transparent"
+
 [modules.hyprland-workspaces]
 display-mode = "icon"
 active-indicator = "underline"
