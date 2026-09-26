@@ -1,5 +1,6 @@
 android-studio
 bibata-cursor-theme-bin
+eww
 figma-agent-linux
 firefox-nightly-bin
 fpm

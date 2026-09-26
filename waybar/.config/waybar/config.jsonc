@@ -42,12 +42,12 @@
     "tooltip-format": "{:%A, %d %B %Y}",
   },
   "custom/wifi": {
-    "exec": "printf ''",
+    "exec": "printf '󰤨'",
     "interval": "once",
     "tooltip": false,
   },
   "custom/sound": {
-    "exec": "printf ''",
+    "exec": "printf '󰕾'",
     "interval": "once",
     "tooltip": false,
   },

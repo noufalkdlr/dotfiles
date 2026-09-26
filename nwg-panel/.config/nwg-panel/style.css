@@ -1,0 +1,72 @@
+* {
+  min-height: 0;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+
+  font-family:
+    "CaskaydiaCove Nerd Font", "Cascadia Code", "Cascadia Mono", monospace;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+window {
+  background: rgba(0, 0, 0, 0.7);
+  color: #dcdcdc;
+}
+
+/* Controls tray icon on the bar */
+#controls-button-box {
+  padding: 0 8px;
+}
+
+#controls-button-box image {
+  color: #cfcfcf;
+}
+
+/* Popup window with sliders/toggles */
+#controls-window {
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 8px;
+  padding: 10px;
+  color: #dcdcdc;
+}
+
+#controls-window scale {
+  color: #ffffff;
+}
+
+#controls-window scale trough {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  min-height: 6px;
+}
+
+#controls-window scale highlight {
+  background: #ffffff;
+  border-radius: 4px;
+}
+
+#controls-window button {
+  background: transparent;
+  color: #dcdcdc;
+  border-radius: 6px;
+  padding: 4px;
+  transition: background 120ms ease;
+}
+
+#controls-window button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#quick-settings-menu,
+menu,
+menuitem {
+  background: rgba(0, 0, 0, 0.85);
+  color: #dcdcdc;
+}
+
+menuitem:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
