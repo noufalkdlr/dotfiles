@@ -14,6 +14,7 @@ qrify
 tor-browser-alpha-bin
 visual-studio-code-bin
 watchman-bin
+wayle-bin
 wofi-emoji
 yay
 yay-debug
