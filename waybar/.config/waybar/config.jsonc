@@ -45,18 +45,18 @@
     "exec": "printf '󰤨'",
     "interval": "once",
     "tooltip": false,
-    "on-click": "pkill -SIGUSR1 -f 'nwg-panel -c controls' || nwg-panel -c controls -o -1",
+    "on-click": "pkill -f 'nwg-panel -c controls' || nwg-panel -c controls",
   },
   "custom/sound": {
     "exec": "printf '󰕾'",
     "interval": "once",
     "tooltip": false,
-    "on-click": "pkill -SIGUSR1 -f 'nwg-panel -c controls' || nwg-panel -c controls -o -1",
+    "on-click": "pkill -f 'nwg-panel -c controls' || nwg-panel -c controls",
   },
   "custom/power": {
     "exec": "printf '⏻'",
     "interval": "once",
     "tooltip": false,
-    "on-click": "pkill -SIGUSR1 -f 'nwg-panel -c controls' || nwg-panel -c controls -o -1",
+    "on-click": "pkill -f 'nwg-panel -c controls' || nwg-panel -c controls",
   },
 }
