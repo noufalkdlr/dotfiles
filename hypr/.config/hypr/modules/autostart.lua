@@ -18,7 +18,7 @@ hl.on("hyprland.start", function()
 
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("/usr/bin/hypridle")
-	hl.exec_cmd("hyprpanel")
+	hl.exec_cmd("wayle panel start")
 	hl.exec_cmd("kdeconnectd")
 
 	hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")

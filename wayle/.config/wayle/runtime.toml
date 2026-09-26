@@ -1,8 +1,13 @@
 [general]
 font-sans = "Cascadia Mono NF"
+font-mono = "Cascadia Mono NF"
 
 [bar]
-button-icon-size = 0.699999988079071
-button-label-size = 1.0499999523162842
+button-icon-size = 0.75
 button-rounding = "full"
-button-border-width = 0
+dropdown-opacity = 100
+
+[modules.hyprland-workspaces]
+display-mode = "icon"
+active-indicator = "underline"
+occupied-color = "bg-selected"

@@ -52,12 +52,6 @@ occupied-color = "#333333"
 empty-color = "#333333"
 container-bg-color = "transparent"
 
-[modules.hyprland-workspaces.workspace-map]
-1 = { label = "●" }
-2 = { label = "●" }
-3 = { label = "●" }
-4 = { label = "●" }
-5 = { label = "●" }
 
 [modules.network]
 label-show = false
