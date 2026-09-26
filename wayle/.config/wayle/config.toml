@@ -1,6 +1,72 @@
+[bar]
+scale = 0.85
+padding = 0.2
+padding-ends = 0.4
+module-gap = 0.4
+bg = "#000000"
+background-opacity = 60
+border-location = "none"
+rounding = "none"
+shadow = "none"
+button-variant = "basic"
+button-opacity = 100
+button-bg-opacity = 0
+button-border-location = "none"
+button-group-border-location = "none"
+button-group-opacity = 0
+dropdown-opacity = 60
+
+[[bar.layout]]
+monitor = "*"
+left = ["dashboard", "hyprland-workspaces"]
+center = ["clock"]
+right = ["network", "bluetooth", "volume"]
+
+[styling]
+rounding = "none"
+
 [styling.palette]
 bg = "#000000"
-surface = "#0a0a0a"
-elevated = "#161616"
+surface = "#000000"
+elevated = "#0a0a0a"
 fg = "#e8e8e8"
 fg-muted = "#8a8a8a"
+primary = "#e8e8e8"
+red = "#e8e8e8"
+yellow = "#e8e8e8"
+green = "#e8e8e8"
+blue = "#e8e8e8"
+
+[modules.dashboard]
+icon-color = "fg"
+icon-bg-color = "transparent"
+
+[modules.clock]
+icon-show = false
+
+[modules.hyprland-workspaces]
+display-mode = "label"
+active-indicator = "background"
+active-color = "#ffffff"
+occupied-color = "#333333"
+empty-color = "#333333"
+container-bg-color = "transparent"
+
+[modules.hyprland-workspaces.workspace-map]
+1 = { label = "●" }
+2 = { label = "●" }
+3 = { label = "●" }
+4 = { label = "●" }
+5 = { label = "●" }
+
+[modules.network]
+label-show = false
+icon-color = "fg"
+
+[modules.bluetooth]
+label-show = false
+icon-color = "fg"
+
+[modules.volume]
+label-show = false
+icon-color = "fg"

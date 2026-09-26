@@ -1,0 +1,8 @@
+[general]
+font-sans = "Cascadia Mono NF"
+
+[bar]
+button-icon-size = 0.699999988079071
+button-label-size = 1.0499999523162842
+button-rounding = "full"
+button-border-width = 0

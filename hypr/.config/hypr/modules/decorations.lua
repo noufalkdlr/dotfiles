@@ -62,6 +62,13 @@ hl.window_rule({
 	border_color = { colors = { "rgba(2c2c2cee)", "rgba(4a4a4aee)" }, angle = 45 },
 })
 
+-- Blur Wayle bar
+hl.layer_rule({
+	name = "blur-wayle-bar",
+	match = { namespace = "wayle-bar-.*" },
+	blur = true,
+})
+
 -- Blur Notifications
 hl.layer_rule({
 	name = "blur-notifications",
