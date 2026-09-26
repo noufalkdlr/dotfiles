@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Prints a waybar custom-module JSON blob describing current Wi-Fi state.
+# Used as the "exec" for waybar's custom/wifi module (return-type: json).
+
+set -uo pipefail
+
+if ! command -v nmcli >/dev/null 2>&1; then
+  printf '{"text":"󰤭","tooltip":"NetworkManager not found","class":"off"}\n'
+  exit 0
+fi
+
+if ! nmcli radio wifi | grep -q enabled; then
+  printf '{"text":"󰤭","tooltip":"Wi-Fi off","class":"off"}\n'
+  exit 0
+fi
+
+SSID="$(nmcli -t -f active,ssid dev wifi | awk -F: '$1=="yes"{print $2}' | head -n1)"
+SIGNAL="$(nmcli -t -f active,signal dev wifi | awk -F: '$1=="yes"{print $2}' | head -n1)"
+
+if [ -z "$SSID" ]; then
+  printf '{"text":"󰤯","tooltip":"Not connected","class":"disconnected"}\n'
+  exit 0
+fi
+
+ICON="󰤨"
+if [ -n "$SIGNAL" ]; then
+  if [ "$SIGNAL" -lt 25 ]; then
+    ICON="󰤟"
+  elif [ "$SIGNAL" -lt 50 ]; then
+    ICON="󰤢"
+  elif [ "$SIGNAL" -lt 75 ]; then
+    ICON="󰤥"
+  fi
+fi
+
+# Escape double quotes in SSID for safe JSON
+SAFE_SSID="${SSID//\"/\\\"}"
+
+printf '{"text":"%s","tooltip":"%s (%s%%)","class":"connected"}\n' "$ICON" "$SAFE_SSID" "${SIGNAL:-?}"

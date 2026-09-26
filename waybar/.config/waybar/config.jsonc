@@ -42,18 +42,23 @@
     "tooltip-format": "{:%A, %d %B %Y}",
   },
   "custom/wifi": {
-    "exec": "printf ''",
-    "interval": "once",
-    "tooltip": false,
+    "exec": "waybar-wifi",
+    "return-type": "json",
+    "interval": 5,
+    "tooltip": true,
+    "on-click": "control-panel",
+    "on-click-right": "wifi-menu",
   },
   "custom/sound": {
     "exec": "printf ''",
     "interval": "once",
     "tooltip": false,
+    "on-click": "audio-menu",
   },
   "custom/power": {
     "exec": "printf '⏻'",
     "interval": "once",
     "tooltip": false,
+    "on-click": "power-menu",
   },
 }

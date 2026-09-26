@@ -1,5 +1,6 @@
 7zip
 adw-gtk-theme
+alsa-utils
 android-tools
 archlinux-xdg-menu
 aria2
@@ -134,6 +135,7 @@ transmission-gtk
 tree
 ttf-indic-otf
 unzip
+usbutils
 uv
 v4l2loopback-dkms
 valgrind
