@@ -133,6 +133,8 @@ Item {
         visible: false
         color: "transparent"
 
+        exclusionMode: ExclusionMode.Ignore
+
         onVisibleChanged: {
             if (!visible) PopupManager.closeIfActive(popup)
         }
@@ -142,22 +144,34 @@ Item {
 
         anchors {
             top: true
+            left: true
             right: true
-        }
-        margins {
-            top: 10
-            right: 10
+            bottom: true
         }
 
-        implicitWidth: 260
-        implicitHeight: Math.min(contentCol.implicitHeight + 20, 400)
+        MouseArea {
+            anchors.fill: parent
+            onClicked: popup.visible = false
+        }
 
         Rectangle {
-            anchors.fill: parent
+            anchors {
+                top: parent.top
+                right: parent.right
+                topMargin: 10
+                rightMargin: 10
+            }
+            width: 260
+            height: Math.min(contentCol.implicitHeight + 20, 400)
             color: Qt.rgba(0, 0, 0, 0.6)
             radius: 8
             border.color: "#333333"
             border.width: 1
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {}
+            }
 
             Flickable {
                 anchors.fill: parent

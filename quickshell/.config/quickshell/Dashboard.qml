@@ -89,21 +89,33 @@ Item {
         anchors {
             top: true
             left: true
-        }
-        margins {
-            top: 40
-            left: 10
+            right: true
+            bottom: true
         }
 
-        implicitWidth: 220
-        implicitHeight: contentCol.implicitHeight + 20
+        MouseArea {
+            anchors.fill: parent
+            onClicked: popup.visible = false
+        }
 
         Rectangle {
-            anchors.fill: parent
+            anchors {
+                top: parent.top
+                left: parent.left
+                topMargin: 40
+                leftMargin: 10
+            }
+            width: 220
+            height: contentCol.implicitHeight + 20
             color: Qt.rgba(0, 0, 0, 0.6)
             radius: 8
             border.color: "#333333"
             border.width: 1
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {}
+            }
 
             Column {
                 id: contentCol
