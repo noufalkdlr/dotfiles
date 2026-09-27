@@ -25,7 +25,7 @@ QtObject {
     readonly property int itemSpacing: 4
     readonly property int itemRadius: 8
     readonly property int itemPaddingH: 10
-    readonly property int iconMarginRight: 12
+    readonly property int iconMarginRight: 20
 
     // Text
     readonly property string fontFamily: "Cascadia Mono"

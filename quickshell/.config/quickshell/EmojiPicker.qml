@@ -118,8 +118,8 @@ Scope {
                         width: parent.width
                         height: PickerStyle.fieldHeight
                         placeholderText: "Search emoji..."
-                        leftPadding: PickerStyle.fieldPadding
-                        rightPadding: PickerStyle.fieldPadding
+                        leftPadding: PickerStyle.fieldPaddingH
+                        rightPadding: PickerStyle.fieldPaddingH
                         color: PickerStyle.textColor
                         placeholderTextColor: PickerStyle.placeholderColor
                         font.family: PickerStyle.fontFamily

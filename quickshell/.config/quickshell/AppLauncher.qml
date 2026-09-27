@@ -98,8 +98,8 @@ Scope {
                         width: parent.width
                         height: PickerStyle.fieldHeight
                         placeholderText: "Search Apps..."
-                        leftPadding: PickerStyle.fieldPadding
-                        rightPadding: PickerStyle.fieldPadding
+                        leftPadding: PickerStyle.fieldPaddingH
+                        rightPadding: PickerStyle.fieldPaddingH
                         color: PickerStyle.textColor
                         placeholderTextColor: PickerStyle.placeholderColor
                         font.family: PickerStyle.fontFamily
@@ -165,7 +165,7 @@ Scope {
                                 anchors.left: parent.left
                                 anchors.leftMargin: 10
                                 anchors.verticalCenter: parent.verticalCenter
-                                spacing: 10
+                                spacing: PickerStyle.iconMarginRight
 
                                 IconImage {
                                     width: 28

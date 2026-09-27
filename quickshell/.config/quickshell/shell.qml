@@ -5,4 +5,5 @@ ShellRoot {
     EmojiPicker {}
     ClipboardPicker {}
     AppLauncher {}
+    Notifications {}
 }
