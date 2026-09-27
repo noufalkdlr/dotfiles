@@ -1,3 +1,5 @@
+//@ pragma IconTheme Reversal-black-dark
+
 import Quickshell
 
 ShellRoot {

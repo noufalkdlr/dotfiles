@@ -171,7 +171,7 @@ Scope {
                                     width: 28
                                     height: 28
                                     anchors.verticalCenter: parent.verticalCenter
-                                    source: Quickshell.iconPath(modelData.icon, "application-x-executable")
+                                    source: Quickshell.iconPath(modelData.icon)
                                 }
 
                                 Text {

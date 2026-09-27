@@ -4,7 +4,7 @@
     "type": "kitty",
     "source": "~/.config/fastfetch/assets/arch-icon.png",
     "width": 33,
-    "recache": true
+    "cache": true,
   },
   "modules": [
     "title",
@@ -22,6 +22,6 @@
     "disk",
     "battery",
     "poweradapter",
-    "break"
-  ]
+    "break",
+  ],
 }
