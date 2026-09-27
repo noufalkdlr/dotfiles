@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import Quickshell
+import Quickshell.Wayland
 import Quickshell.Services.Pipewire
 
 Item {
@@ -33,25 +34,44 @@ Item {
     MouseArea {
         anchors.fill: parent
         cursorShape: Qt.PointingHandCursor
-        onClicked: popup.visible = !popup.visible
+        onClicked: {
+            if (popup.visible) {
+                popup.visible = false
+                PopupManager.closeIfActive(popup)
+            } else {
+                PopupManager.request(popup)
+                popup.visible = true
+            }
+        }
     }
 
-    PopupWindow {
+    PanelWindow {
         id: popup
-        anchor.item: root
-        anchor.rect.x: 10
-        anchor.rect.y: root.height + 20
-        anchor.edges: Edges.Bottom | Edges.Right
-        anchor.gravity: Edges.Bottom | Edges.Left
-
-        implicitWidth: 240
-        implicitHeight: contentCol.implicitHeight + 20
         visible: false
         color: "transparent"
 
+        onVisibleChanged: {
+            if (!visible) PopupManager.closeIfActive(popup)
+        }
+
+        WlrLayershell.namespace: "quickshell-popup"
+        WlrLayershell.layer: WlrLayer.Overlay
+
+        anchors {
+            top: true
+            right: true
+        }
+        margins {
+            top: 10
+            right: 10
+        }
+
+        implicitWidth: 240
+        implicitHeight: contentCol.implicitHeight + 20
+
         Rectangle {
             anchors.fill: parent
-            color: "#1a1a1a"
+            color: Qt.rgba(0, 0, 0, 0.6)
             radius: 8
             border.color: "#333333"
             border.width: 1

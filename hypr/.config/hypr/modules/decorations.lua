@@ -37,7 +37,7 @@ hl.config({
 			enabled = true,
 			range = 4,
 			render_power = 3,
-			color = 0xee1a1a1a,
+			color = "00000",
 		},
 
 		blur = {
@@ -45,6 +45,7 @@ hl.config({
 			size = 10,
 			passes = 3,
 			vibrancy = 0.1696,
+			ignore_opacity = true,
 		},
 	},
 
@@ -62,11 +63,20 @@ hl.window_rule({
 	border_color = { colors = { "rgba(2c2c2cee)", "rgba(4a4a4aee)" }, angle = 45 },
 })
 
+-- Blur Quickshell popups
+hl.layer_rule({
+	name = "blur-quickshell-popup",
+	match = { namespace = "quickshell-popup" },
+	blur = true,
+	ignore_alpha = 0.2,
+})
+
 -- Blur Quickshell bar
 hl.layer_rule({
 	name = "blur-quickshell-bar",
 	match = { namespace = "quickshell" },
 	blur = true,
+	ignore_alpha = 0.2,
 })
 
 -- Blur Wayle bar
