@@ -9,13 +9,12 @@ Scope {
     id: root
 
     property bool visible: false
-    property var allApps: []
-    property var filtered: []
+    property var allApps: DesktopEntries.applications.values
+    property var filtered: allApps
 
     function toggle() {
         root.visible = !root.visible
         if (root.visible) {
-            root.allApps = DesktopEntries.applications.values
             root.filtered = root.allApps
         }
     }
@@ -79,10 +78,10 @@ Scope {
                 anchors.centerIn: parent
                 width: 400
                 height: 480
-                color: Qt.rgba(0, 0, 0, 0.7)
-                radius: 12
-                border.color: Qt.rgba(1, 1, 1, 0.1)
-                border.width: 1
+                color: PickerStyle.windowColor
+                radius: PickerStyle.windowRadius
+                border.color: PickerStyle.borderColor
+                border.width: PickerStyle.borderWidth
 
                 MouseArea {
                     anchors.fill: parent
@@ -91,25 +90,25 @@ Scope {
 
                 Column {
                     anchors.fill: parent
-                    anchors.margins: 16
+                    anchors.margins: PickerStyle.windowMargins
                     spacing: 8
 
                     TextField {
                         id: searchField
                         width: parent.width
-                        height: 38
+                        height: PickerStyle.fieldHeight
                         placeholderText: "Search Apps..."
-                        leftPadding: 12
-                        rightPadding: 12
-                        color: "#ffffff"
-                        placeholderTextColor: Qt.rgba(1, 1, 1, 0.4)
-                        font.family: "Cascadia Mono"
-                        font.pixelSize: 14
+                        leftPadding: PickerStyle.fieldPadding
+                        rightPadding: PickerStyle.fieldPadding
+                        color: PickerStyle.textColor
+                        placeholderTextColor: PickerStyle.placeholderColor
+                        font.family: PickerStyle.fontFamily
+                        font.pixelSize: PickerStyle.fontSize
 
                         background: Rectangle {
-                            color: Qt.rgba(1, 1, 1, 0.04)
+                            color: PickerStyle.fieldBg
                             radius: 8
-                            border.color: Qt.rgba(1, 1, 1, 0.08)
+                            border.color: PickerStyle.fieldBorder
                             border.width: 1
                         }
 
@@ -144,12 +143,12 @@ Scope {
                         clip: true
                         currentIndex: 0
                         highlightFollowsCurrentItem: true
-                        spacing: 4
+                        spacing: PickerStyle.itemSpacing
 
                         highlight: Rectangle {
-                            color: Qt.rgba(1, 1, 1, 0.12)
+                            color: PickerStyle.highlightColor
                             radius: 8
-                            border.color: Qt.rgba(1, 1, 1, 0.08)
+                            border.color: PickerStyle.highlightBorder
                             border.width: 1
                         }
 
@@ -160,7 +159,7 @@ Scope {
                             required property int index
 
                             width: listView.width
-                            height: 40
+                            height: PickerStyle.itemHeight
 
                             Row {
                                 anchors.left: parent.left
@@ -178,10 +177,10 @@ Scope {
                                 Text {
                                     anchors.verticalCenter: parent.verticalCenter
                                     text: modelData.name
-                                    font.family: "Cascadia Mono"
-                                    font.pixelSize: 13
+                                    font.family: PickerStyle.fontFamily
+                                    font.pixelSize: PickerStyle.itemFontSize
                                     font.weight: index === listView.currentIndex ? Font.Bold : Font.Normal
-                                    color: "#ffffff"
+                                    color: PickerStyle.textColor
                                     elide: Text.ElideRight
                                     width: listView.width - 60
                                 }

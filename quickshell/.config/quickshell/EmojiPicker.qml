@@ -98,10 +98,10 @@ Scope {
                 anchors.centerIn: parent
                 width: 400
                 height: 420
-                color: Qt.rgba(0, 0, 0, 0.7)
-                radius: 12
-                border.color: Qt.rgba(1, 1, 1, 0.1)
-                border.width: 1
+                color: PickerStyle.windowColor
+                radius: PickerStyle.windowRadius
+                border.color: PickerStyle.borderColor
+                border.width: PickerStyle.borderWidth
 
                 MouseArea {
                     anchors.fill: parent
@@ -110,25 +110,25 @@ Scope {
 
                 Column {
                     anchors.fill: parent
-                    anchors.margins: 16
+                    anchors.margins: PickerStyle.windowMargins
                     spacing: 8
 
                     TextField {
                         id: searchField
                         width: parent.width
-                        height: 38
+                        height: PickerStyle.fieldHeight
                         placeholderText: "Search emoji..."
-                        leftPadding: 12
-                        rightPadding: 12
-                        color: "#ffffff"
-                        placeholderTextColor: Qt.rgba(1, 1, 1, 0.4)
-                        font.family: "Cascadia Mono"
-                        font.pixelSize: 14
+                        leftPadding: PickerStyle.fieldPadding
+                        rightPadding: PickerStyle.fieldPadding
+                        color: PickerStyle.textColor
+                        placeholderTextColor: PickerStyle.placeholderColor
+                        font.family: PickerStyle.fontFamily
+                        font.pixelSize: PickerStyle.fontSize
 
                         background: Rectangle {
-                            color: Qt.rgba(1, 1, 1, 0.04)
+                            color: PickerStyle.fieldBg
                             radius: 8
-                            border.color: Qt.rgba(1, 1, 1, 0.08)
+                            border.color: PickerStyle.fieldBorder
                             border.width: 1
                         }
 
@@ -183,9 +183,9 @@ Scope {
                         highlightFollowsCurrentItem: true
 
                         highlight: Rectangle {
-                            color: Qt.rgba(1, 1, 1, 0.12)
+                            color: PickerStyle.highlightColor
                             radius: 8
-                            border.color: Qt.rgba(1, 1, 1, 0.08)
+                            border.color: PickerStyle.highlightBorder
                             border.width: 1
                         }
 

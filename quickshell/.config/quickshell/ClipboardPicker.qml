@@ -119,10 +119,10 @@ Scope {
                 anchors.centerIn: parent
                 width: 370
                 height: 475
-                color: Qt.rgba(0, 0, 0, 0.7)
-                radius: 12
-                border.color: Qt.rgba(1, 1, 1, 0.1)
-                border.width: 1
+                color: PickerStyle.windowColor
+                radius: PickerStyle.windowRadius
+                border.color: PickerStyle.borderColor
+                border.width: PickerStyle.borderWidth
 
                 MouseArea {
                     anchors.fill: parent
@@ -131,25 +131,25 @@ Scope {
 
                 Column {
                     anchors.fill: parent
-                    anchors.margins: 16
+                    anchors.margins: PickerStyle.windowMargins
                     spacing: 8
 
                     TextField {
                         id: searchField
                         width: parent.width
-                        height: 38
+                        height: PickerStyle.fieldHeight
                         placeholderText: "Search clipboard..."
-                        leftPadding: 12
-                        rightPadding: 12
-                        color: "#ffffff"
-                        placeholderTextColor: Qt.rgba(1, 1, 1, 0.4)
-                        font.family: "Cascadia Mono"
-                        font.pixelSize: 14
+                        leftPadding: PickerStyle.fieldPadding
+                        rightPadding: PickerStyle.fieldPadding
+                        color: PickerStyle.textColor
+                        placeholderTextColor: PickerStyle.placeholderColor
+                        font.family: PickerStyle.fontFamily
+                        font.pixelSize: PickerStyle.fontSize
 
                         background: Rectangle {
-                            color: Qt.rgba(1, 1, 1, 0.04)
+                            color: PickerStyle.fieldBg
                             radius: 8
-                            border.color: Qt.rgba(1, 1, 1, 0.08)
+                            border.color: PickerStyle.fieldBorder
                             border.width: 1
                         }
 
@@ -184,12 +184,12 @@ Scope {
                         clip: true
                         currentIndex: 0
                         highlightFollowsCurrentItem: true
-                        spacing: 4
+                        spacing: PickerStyle.itemSpacing
 
                         highlight: Rectangle {
-                            color: Qt.rgba(1, 1, 1, 0.12)
+                            color: PickerStyle.highlightColor
                             radius: 8
-                            border.color: Qt.rgba(1, 1, 1, 0.08)
+                            border.color: PickerStyle.highlightBorder
                             border.width: 1
                         }
 
@@ -200,7 +200,7 @@ Scope {
                             required property int index
 
                             width: listView.width
-                            height: 34
+                            height: PickerStyle.itemHeight
 
                             Row {
                                 anchors.left: parent.left
@@ -211,10 +211,10 @@ Scope {
 
                                 Text {
                                     text: modelData.preview
-                                    font.family: "Cascadia Mono"
-                                    font.pixelSize: 13
+                                    font.family: PickerStyle.fontFamily
+                                    font.pixelSize: PickerStyle.itemFontSize
                                     font.weight: index === listView.currentIndex ? Font.Bold : Font.Normal
-                                    color: "#ffffff"
+                                    color: PickerStyle.textColor
                                     elide: Text.ElideRight
                                     width: parent.width
                                 }
@@ -228,7 +228,7 @@ Scope {
                                 text: "\uf1f8"
                                 font.family: Theme.fontFamily
                                 font.pixelSize: 12
-                                color: Qt.rgba(1, 1, 1, 0.4)
+                                color: PickerStyle.placeholderColor
 
                                 MouseArea {
                                     anchors.fill: parent
