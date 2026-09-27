@@ -7,9 +7,7 @@ local helpers = require("modules.helpers.window")
 -- Set programs that you use
 local terminal = "ghostty"
 local fileManager = "nautilus"
-local menu = "wofi"
-local browser = "firefox-nightly"
-local control = "cosmic-settings"
+local browser = "zen-browser"
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -69,9 +67,6 @@ hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
-
--- Cosmic-settings (SUPER + SHIFT + C)
-hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd(control))
 
 -- Capture Region (SUPER + SHIFT + P)
 hl.bind(
