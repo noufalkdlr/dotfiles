@@ -86,6 +86,7 @@ Scope {
                                 anchors.left: parent.left
                                 text: modelData.appName || "Notification"
                                 font.family: Theme.textFontFamily
+                                font.weight: Theme.textFontWeight
                                 font.pixelSize: 11
                                 color: "#8a8a8a"
                             }
@@ -110,6 +111,7 @@ Scope {
                             width: parent.width
                             text: modelData.summary
                             font.family: Theme.textFontFamily
+                            font.weight: Theme.textFontWeight
                             font.pixelSize: 15
                             font.bold: true
                             color: "#ffffff"
@@ -121,6 +123,7 @@ Scope {
                             width: parent.width
                             text: modelData.body
                             font.family: Theme.textFontFamily
+                            font.weight: Theme.textFontWeight
                             font.pixelSize: 13
                             color: "#ffffff"
                             wrapMode: Text.WordWrap

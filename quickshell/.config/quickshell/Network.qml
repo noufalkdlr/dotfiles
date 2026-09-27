@@ -194,6 +194,7 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
                             text: "Wi-Fi"
                             font.family: Theme.textFontFamily
+                            font.weight: Theme.textFontWeight
                             font.pixelSize: 13
                             color: "#ffffff"
                         }
@@ -218,6 +219,7 @@ Item {
                         visible: root.connected
                         text: "Connected: " + root.currentSSID
                         font.family: Theme.textFontFamily
+                        font.weight: Theme.textFontWeight
                         font.pixelSize: 12
                         color: "#8affa0"
                     }
@@ -226,6 +228,7 @@ Item {
                         visible: root.connected
                         text: "Disconnect"
                         font.family: Theme.textFontFamily
+                        font.weight: Theme.textFontWeight
                         font.pixelSize: 12
                         color: "#ff8a8a"
 
@@ -247,6 +250,7 @@ Item {
                     Text {
                         text: root.scanning ? "Scanning..." : "Available Networks"
                         font.family: Theme.textFontFamily
+                        font.weight: Theme.textFontWeight
                         font.pixelSize: 11
                         color: "#8a8a8a"
                     }
@@ -278,6 +282,7 @@ Item {
                                 Text {
                                     text: modelData.ssid + " (" + modelData.signal + "%)"
                                     font.family: Theme.textFontFamily
+                                    font.weight: Theme.textFontWeight
                                     font.pixelSize: 12
                                     color: "#ffffff"
                                     elide: Text.ElideRight

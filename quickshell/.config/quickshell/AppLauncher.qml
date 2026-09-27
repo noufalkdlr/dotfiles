@@ -103,6 +103,7 @@ Scope {
                         color: PickerStyle.textColor
                         placeholderTextColor: PickerStyle.placeholderColor
                         font.family: PickerStyle.fontFamily
+                        font.weight: PickerStyle.fontWeight
                         font.pixelSize: PickerStyle.fontSize
 
                         background: Rectangle {

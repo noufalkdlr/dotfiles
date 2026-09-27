@@ -127,6 +127,7 @@ Item {
                 Text {
                     text: root.username + "@" + root.hostname
                     font.family: Theme.textFontFamily
+                    font.weight: Theme.textFontWeight
                     font.pixelSize: 13
                     color: "#ffffff"
                 }
@@ -134,6 +135,7 @@ Item {
                 Text {
                     text: root.uptime
                     font.family: Theme.textFontFamily
+                    font.weight: Theme.textFontWeight
                     font.pixelSize: 11
                     color: "#8a8a8a"
                 }
@@ -177,6 +179,7 @@ Item {
                             Text {
                                 text: modelData.label
                                 font.family: Theme.textFontFamily
+                                font.weight: Theme.textFontWeight
                                 font.pixelSize: 12
                                 color: "#ffffff"
                             }

@@ -28,7 +28,8 @@ QtObject {
     readonly property int iconMarginRight: 12
 
     // Text
-    readonly property string fontFamily: ""
+    readonly property string fontFamily: "Noto Sans"
+    readonly property int fontWeight: Font.Medium
     readonly property int fontSize: 16
     readonly property int itemFontSize: 15
     readonly property color textColor: "#ffffff"

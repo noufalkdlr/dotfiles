@@ -121,6 +121,7 @@ Item {
                     Text {
                         text: root.muted ? "Muted" : Math.round(root.volumeLevel * 100) + "%"
                         font.family: Theme.textFontFamily
+                        font.weight: Theme.textFontWeight
                         font.pixelSize: 13
                         color: "#ffffff"
                     }
@@ -152,6 +153,7 @@ Item {
                 Text {
                     text: "Output Devices"
                     font.family: Theme.textFontFamily
+                    font.weight: Theme.textFontWeight
                     font.pixelSize: 11
                     color: "#8a8a8a"
                 }
@@ -173,6 +175,7 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
                             text: modelData.description || modelData.name
                             font.family: Theme.textFontFamily
+                            font.weight: Theme.textFontWeight
                             font.pixelSize: 12
                             color: "#ffffff"
                             elide: Text.ElideRight
