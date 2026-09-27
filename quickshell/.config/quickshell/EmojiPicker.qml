@@ -13,15 +13,17 @@ Scope {
     property string query: ""
 
     FileView {
-        path: Qt.resolvedUrl("data/emojis.json")
+        id: emojiFile
+        path: Qt.resolvedUrl("./data/emojis.json")
+        blockLoading: true
+    }
 
-        onLoaded: {
-            try {
-                root.allEmojis = JSON.parse(text())
-                root.filtered = root.allEmojis
-            } catch (e) {
-                console.log("Failed to parse emojis.json:", e)
-            }
+    Component.onCompleted: {
+        try {
+            root.allEmojis = JSON.parse(emojiFile.text())
+            root.filtered = root.allEmojis
+        } catch (e) {
+            console.log("Failed to parse emojis.json:", e)
         }
     }
 
@@ -30,8 +32,6 @@ Scope {
         if (root.visible) {
             root.query = ""
             root.filtered = root.allEmojis
-            searchField.text = ""
-            searchField.forceActiveFocus()
         }
     }
 
@@ -39,10 +39,10 @@ Scope {
         root.query = q
         if (q.length === 0) {
             root.filtered = root.allEmojis
-            return
+        } else {
+            const lower = q.toLowerCase()
+            root.filtered = root.allEmojis.filter(e => e.text.toLowerCase().includes(lower))
         }
-        const lower = q.toLowerCase()
-        root.filtered = root.allEmojis.filter(e => e.text.toLowerCase().includes(lower))
     }
 
     function selectEmoji(char) {
@@ -88,6 +88,10 @@ Scope {
             implicitWidth: 400
             implicitHeight: 420
 
+            Component.onCompleted: {
+                searchField.forceActiveFocus()
+            }
+
             MouseArea {
                 anchors.fill: parent
                 onClicked: root.visible = false
@@ -114,6 +118,7 @@ Scope {
                         id: searchField
                         width: parent.width
                         placeholderText: "Search emoji..."
+                        placeholderTextColor: "#8a8a8a"
                         color: "#ffffff"
                         font.family: Theme.fontFamily
                         font.pixelSize: 13
@@ -124,47 +129,94 @@ Scope {
                             border.color: "#333333"
                         }
 
-                        onTextChanged: root.doFilter(text)
+                        onTextChanged: {
+                            root.doFilter(text)
+                            grid.currentIndex = 0
+                        }
 
-                        Keys.onEscapePressed: root.visible = false
+                        Keys.onPressed: (event) => {
+                            if (event.key === Qt.Key_Escape) {
+                                root.visible = false
+                                event.accepted = true
+                            } else if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
+                                if (root.filtered.length > 0 && grid.currentIndex >= 0) {
+                                    root.selectEmoji(root.filtered[grid.currentIndex].emoji)
+                                }
+                                event.accepted = true
+                            } else if (event.key === Qt.Key_Down || (event.modifiers & Qt.ControlModifier && event.key === Qt.Key_N)) {
+                                grid.currentIndex = Math.min(grid.currentIndex + grid.columns, root.filtered.length - 1)
+                                event.accepted = true
+                            } else if (event.key === Qt.Key_Up || (event.modifiers & Qt.ControlModifier && event.key === Qt.Key_P)) {
+                                grid.currentIndex = Math.max(grid.currentIndex - grid.columns, 0)
+                                event.accepted = true
+                            } else if (event.key === Qt.Key_Left || (event.modifiers & Qt.ControlModifier && event.key === Qt.Key_H)) {
+                                grid.currentIndex = Math.max(grid.currentIndex - 1, 0)
+                                event.accepted = true
+                            } else if (event.key === Qt.Key_Right || (event.modifiers & Qt.ControlModifier && event.key === Qt.Key_L)) {
+                                grid.currentIndex = Math.min(grid.currentIndex + 1, root.filtered.length - 1)
+                                event.accepted = true
+                            } else if (event.modifiers & Qt.ControlModifier && event.key === Qt.Key_J) {
+                                grid.currentIndex = Math.min(grid.currentIndex + grid.columns, root.filtered.length - 1)
+                                event.accepted = true
+                            } else if (event.modifiers & Qt.ControlModifier && event.key === Qt.Key_K) {
+                                grid.currentIndex = Math.max(grid.currentIndex - grid.columns, 0)
+                                event.accepted = true
+                            }
+                        }
                     }
 
                     GridView {
                         id: grid
                         width: parent.width
                         height: parent.height - searchField.height - 8
-                        cellWidth: 44
-                        cellHeight: 44
                         clip: true
 
+                        readonly property int columns: 9
+                        cellWidth: width / columns
+                        cellHeight: 44
+
                         model: root.filtered
+                        currentIndex: 0
+                        highlightFollowsCurrentItem: true
 
-                        delegate: Rectangle {
-                            required property var modelData
-
-                            width: 40
-                            height: 40
+                        highlight: Rectangle {
+                            color: "#333333"
                             radius: 6
-                            color: hoverArea.containsMouse ? "#333333" : "transparent"
+                        }
 
-                            Text {
+                        delegate: Item {
+                            required property var modelData
+                            required property int index
+
+                            width: grid.cellWidth
+                            height: grid.cellHeight
+
+                            Rectangle {
                                 anchors.centerIn: parent
-                                text: modelData.emoji
-                                font.pixelSize: 20
-                            }
+                                width: 40
+                                height: 40
+                                radius: 6
+                                color: "transparent"
 
-                            MouseArea {
-                                id: hoverArea
-                                anchors.fill: parent
-                                hoverEnabled: true
-                                cursorShape: Qt.PointingHandCursor
-                                onClicked: root.selectEmoji(modelData.emoji)
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: modelData.emoji
+                                    font.pixelSize: 20
+                                }
 
-                                ToolTip.visible: containsMouse
-                                ToolTip.text: modelData.text.split(" ")[0] + " " + modelData.text.split(" ")[1]
+                                MouseArea {
+                                    anchors.fill: parent
+                                    hoverEnabled: true
+                                    cursorShape: Qt.PointingHandCursor
+                                    onEntered: grid.currentIndex = index
+                                    onClicked: root.selectEmoji(modelData.emoji)
+
+                                    ToolTip.visible: containsMouse
+                                    ToolTip.text: modelData.text.split(" ")[0] + " " + modelData.text.split(" ")[1]
+                                }
                             }
                         }
-                    }
+}
                 }
             }
         }
