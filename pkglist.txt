@@ -115,6 +115,7 @@ qt5-svg
 qt5-wayland
 qt6-virtualkeyboard
 qt6ct
+quickshell
 reflector
 rpm-tools
 rsync
