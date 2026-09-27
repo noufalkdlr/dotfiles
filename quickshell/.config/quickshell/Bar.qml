@@ -9,6 +9,7 @@ Scope {
             PanelWindow {
                 required property var modelData
                 screen: modelData
+                color: "transparent"
 
                 anchors {
                     top: true
@@ -19,7 +20,7 @@ Scope {
 
                 Rectangle {
                     anchors.fill: parent
-                    color: "#000000"
+                    color: Qt.rgba(0, 0, 0, 0.5)
 
                     // ---- LEFT ----
                     Row {
@@ -48,8 +49,17 @@ Scope {
                         anchors.right: parent.right
                         anchors.rightMargin: 10
                         anchors.verticalCenter: parent.verticalCenter
-                        spacing: 10
+                        spacing: 16
 
+                        Network {
+                            anchors.verticalCenter: parent.verticalCenter
+                          }
+                        Bluetooth {
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
+                        Volume {
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
                     }
                 }
             }
