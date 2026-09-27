@@ -96,7 +96,7 @@ hl.bind(
 )
 
 -- Emoji Picker (SUPER + ;)
-hl.bind(mainMod .. " + semicolon", hl.dsp.exec_cmd("wofi-emoji"))
+hl.bind(mainMod .. " + semicolon", hl.dsp.exec_cmd("qs ipc call emojiPicker toggle"))
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
