@@ -85,7 +85,7 @@ Scope {
                                 id: appNameText
                                 anchors.left: parent.left
                                 text: modelData.appName || "Notification"
-                                font.family: "Cascadia Mono"
+                                font.family: Theme.textFontFamily
                                 font.pixelSize: 11
                                 color: "#8a8a8a"
                             }
@@ -109,7 +109,7 @@ Scope {
                         Text {
                             width: parent.width
                             text: modelData.summary
-                            font.family: "Cascadia Mono"
+                            font.family: Theme.textFontFamily
                             font.pixelSize: 15
                             font.bold: true
                             color: "#ffffff"
@@ -120,7 +120,7 @@ Scope {
                             visible: modelData.body.length > 0
                             width: parent.width
                             text: modelData.body
-                            font.family: "Cascadia Mono"
+                            font.family: Theme.textFontFamily
                             font.pixelSize: 13
                             color: "#ffffff"
                             wrapMode: Text.WordWrap

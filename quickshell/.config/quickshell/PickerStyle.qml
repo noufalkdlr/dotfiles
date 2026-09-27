@@ -12,7 +12,7 @@ QtObject {
     // Search field (wofi #input: padding: 10px 12px)
     readonly property int fieldHeight: 46
     readonly property int fieldPaddingV: 10
-    readonly property int fieldPaddingH: 12
+    readonly property int fieldPaddingH: 16
     readonly property color fieldBg: Qt.rgba(1, 1, 1, 0.04)
     readonly property color fieldBorder: Qt.rgba(1, 1, 1, 0.08)
     readonly property color placeholderColor: Qt.rgba(1, 1, 1, 0.4)
@@ -25,10 +25,10 @@ QtObject {
     readonly property int itemSpacing: 4
     readonly property int itemRadius: 8
     readonly property int itemPaddingH: 10
-    readonly property int iconMarginRight: 20
+    readonly property int iconMarginRight: 12
 
     // Text
-    readonly property string fontFamily: "Cascadia Mono"
+    readonly property string fontFamily: ""
     readonly property int fontSize: 16
     readonly property int itemFontSize: 15
     readonly property color textColor: "#ffffff"

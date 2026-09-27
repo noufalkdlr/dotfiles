@@ -76,7 +76,7 @@ Scope {
 
             Rectangle {
                 anchors.centerIn: parent
-                width: 400
+                width: 370
                 height: 480
                 color: PickerStyle.windowColor
                 radius: PickerStyle.windowRadius

@@ -193,7 +193,7 @@ Item {
                             anchors.left: parent.left
                             anchors.verticalCenter: parent.verticalCenter
                             text: "Wi-Fi"
-                            font.family: Theme.fontFamily
+                            font.family: Theme.textFontFamily
                             font.pixelSize: 13
                             color: "#ffffff"
                         }
@@ -217,7 +217,7 @@ Item {
                     Text {
                         visible: root.connected
                         text: "Connected: " + root.currentSSID
-                        font.family: Theme.fontFamily
+                        font.family: Theme.textFontFamily
                         font.pixelSize: 12
                         color: "#8affa0"
                     }
@@ -225,7 +225,7 @@ Item {
                     Text {
                         visible: root.connected
                         text: "Disconnect"
-                        font.family: Theme.fontFamily
+                        font.family: Theme.textFontFamily
                         font.pixelSize: 12
                         color: "#ff8a8a"
 
@@ -246,7 +246,7 @@ Item {
                     // ---- Scan status / list ----
                     Text {
                         text: root.scanning ? "Scanning..." : "Available Networks"
-                        font.family: Theme.fontFamily
+                        font.family: Theme.textFontFamily
                         font.pixelSize: 11
                         color: "#8a8a8a"
                     }
@@ -277,7 +277,7 @@ Item {
 
                                 Text {
                                     text: modelData.ssid + " (" + modelData.signal + "%)"
-                                    font.family: Theme.fontFamily
+                                    font.family: Theme.textFontFamily
                                     font.pixelSize: 12
                                     color: "#ffffff"
                                     elide: Text.ElideRight

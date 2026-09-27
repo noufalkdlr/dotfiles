@@ -126,14 +126,14 @@ Item {
                 // ---- User info ----
                 Text {
                     text: root.username + "@" + root.hostname
-                    font.family: Theme.fontFamily
+                    font.family: Theme.textFontFamily
                     font.pixelSize: 13
                     color: "#ffffff"
                 }
 
                 Text {
                     text: root.uptime
-                    font.family: Theme.fontFamily
+                    font.family: Theme.textFontFamily
                     font.pixelSize: 11
                     color: "#8a8a8a"
                 }
@@ -176,7 +176,7 @@ Item {
 
                             Text {
                                 text: modelData.label
-                                font.family: Theme.fontFamily
+                                font.family: Theme.textFontFamily
                                 font.pixelSize: 12
                                 color: "#ffffff"
                             }

@@ -15,7 +15,7 @@ Item {
         id: label
         text: time
         color: "white"
-        font.family: Theme.fontFamily
+        font.family: Theme.textFontFamily
         font.pixelSize: Theme.fontSize
     }
 
@@ -96,7 +96,7 @@ Item {
                 Text {
                     anchors.horizontalCenter: parent.horizontalCenter
                     text: calGrid.locale.standaloneMonthName(calGrid.month) + " " + calGrid.year
-                    font.family: Theme.fontFamily
+                    font.family: Theme.textFontFamily
                     font.pixelSize: 14
                     color: "#ffffff"
                 }
@@ -108,7 +108,7 @@ Item {
                     delegate: Text {
                         required property var model
                         text: model.shortName
-                        font.family: Theme.fontFamily
+                        font.family: Theme.textFontFamily
                         font.pixelSize: 11
                         color: "#8a8a8a"
                         horizontalAlignment: Text.AlignHCenter
@@ -128,7 +128,7 @@ Item {
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
                         opacity: model.month === calGrid.month ? 1 : 0.3
-                        font.family: Theme.fontFamily
+                        font.family: Theme.textFontFamily
                         font.pixelSize: 12
                         color: model.today ? "#000000" : "#ffffff"
 
