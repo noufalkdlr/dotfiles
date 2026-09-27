@@ -105,10 +105,10 @@ Item {
                 topMargin: 40
                 leftMargin: 10
             }
-            width: 220
-            height: contentCol.implicitHeight + 20
+            width: 240
+            height: contentCol.implicitHeight + 16
             color: Qt.rgba(0, 0, 0, 0.6)
-            radius: 8
+            radius: 11
             border.color: "#333333"
             border.width: 1
 
@@ -120,24 +120,31 @@ Item {
             Column {
                 id: contentCol
                 anchors.fill: parent
-                anchors.margins: 12
-                spacing: 10
+                anchors.margins: 6
+                spacing: 2
 
-                // ---- User info ----
-                Text {
-                    text: root.username + "@" + root.hostname
-                    font.family: Theme.textFontFamily
-                    font.weight: Theme.textFontWeight
-                    font.pixelSize: 13
-                    color: "#ffffff"
-                }
+                // ---- User info header ----
+                Column {
+                    width: parent.width
+                    spacing: 1
+                    topPadding: 4
+                    bottomPadding: 8
+                    leftPadding: 10
 
-                Text {
-                    text: root.uptime
-                    font.family: Theme.textFontFamily
-                    font.weight: Theme.textFontWeight
-                    font.pixelSize: 11
-                    color: "#8a8a8a"
+                    Text {
+                        text: root.username + "@" + root.hostname
+                        font.family: Theme.textFontFamily
+                        font.weight: Font.DemiBold
+                        font.pixelSize: 13
+                        color: "#ffffff"
+                    }
+
+                    Text {
+                        text: root.uptime
+                        font.family: Theme.textFontFamily
+                        font.pixelSize: 11
+                        color: "#9a9a9a"
+                    }
                 }
 
                 Rectangle {
@@ -146,41 +153,43 @@ Item {
                     color: "#333333"
                 }
 
+                Item { width: 1; height: 4 }
+
                 // ---- Power actions ----
                 Repeater {
                     model: [
-                        { label: "Lock", icon: "\uf023", action: lockProc },
-                        { label: "Logout", icon: "\uf2f5", action: logoutProc },
-                        { label: "Reboot", icon: "\uf2f1", action: rebootProc },
-                        { label: "Shutdown", icon: "\uf011", action: shutdownProc }
+                        { label: "Lock Screen", icon: "\uf023", action: lockProc },
+                        { label: "Log Out", icon: "\uf2f5", action: logoutProc },
+                        { label: "Restart", icon: "\uf2f1", action: rebootProc },
+                        { label: "Shut Down", icon: "\uf011", action: shutdownProc }
                     ]
 
                     delegate: Rectangle {
                         required property var modelData
 
                         width: contentCol.width
-                        height: 32
-                        radius: 4
-                        color: hoverArea.containsMouse ? "#333333" : "transparent"
+                        height: 28
+                        radius: 6
+                        color: hoverArea.containsMouse ? "#0A84FF" : "transparent"
 
                         Row {
                             anchors.left: parent.left
-                            anchors.leftMargin: 8
+                            anchors.leftMargin: 10
                             anchors.verticalCenter: parent.verticalCenter
                             spacing: 8
 
                             Text {
                                 text: modelData.icon
                                 font.family: Theme.fontFamily
-                                font.pixelSize: 13
+                                font.pixelSize: 12
                                 color: "#ffffff"
+                                width: 16
                             }
 
                             Text {
                                 text: modelData.label
                                 font.family: Theme.textFontFamily
-                                font.weight: Theme.textFontWeight
-                                font.pixelSize: 12
+                                font.pixelSize: 13
                                 color: "#ffffff"
                             }
                         }

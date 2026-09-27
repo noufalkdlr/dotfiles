@@ -78,10 +78,10 @@ Item {
                 topMargin: 40
                 rightMargin: 10
             }
-            width: 240
-            height: contentCol.implicitHeight + 20
+            width: 260
+            height: contentCol.implicitHeight + 24
             color: Qt.rgba(0, 0, 0, 0.6)
-            radius: 8
+            radius: 11
             border.color: "#333333"
             border.width: 1
 
@@ -93,7 +93,7 @@ Item {
             Column {
                 id: contentCol
                 anchors.fill: parent
-                anchors.margins: 10
+                anchors.margins: 12
                 spacing: 10
 
                 // ---- Mute + Percentage ----
@@ -121,7 +121,7 @@ Item {
                     Text {
                         text: root.muted ? "Muted" : Math.round(root.volumeLevel * 100) + "%"
                         font.family: Theme.textFontFamily
-                        font.weight: Theme.textFontWeight
+                        font.weight: Font.DemiBold
                         font.pixelSize: 13
                         color: "#ffffff"
                     }
@@ -131,6 +131,7 @@ Item {
                 Slider {
                     id: volSlider
                     width: parent.width
+                    height: 20
                     from: 0
                     to: 1
                     value: root.volumeLevel
@@ -140,6 +141,33 @@ Item {
                             root.sink.audio.muted = false
                             root.sink.audio.volume = value
                         }
+                    }
+
+                    background: Rectangle {
+                        x: volSlider.leftPadding
+                        y: volSlider.topPadding + volSlider.availableHeight / 2 - height / 2
+                        width: volSlider.availableWidth
+                        height: 4
+                        radius: 2
+                        color: Qt.rgba(1, 1, 1, 0.15)
+
+                        Rectangle {
+                            width: volSlider.visualPosition * parent.width
+                            height: parent.height
+                            radius: 2
+                            color: "#0A84FF"
+                        }
+                    }
+
+                    handle: Rectangle {
+                        x: volSlider.leftPadding + volSlider.visualPosition * (volSlider.availableWidth - width)
+                        y: volSlider.topPadding + volSlider.availableHeight / 2 - height / 2
+                        width: 14
+                        height: 14
+                        radius: 7
+                        color: "#ffffff"
+                        border.color: Qt.rgba(0, 0, 0, 0.2)
+                        border.width: 0.5
                     }
                 }
 
@@ -155,7 +183,7 @@ Item {
                     font.family: Theme.textFontFamily
                     font.weight: Theme.textFontWeight
                     font.pixelSize: 11
-                    color: "#8a8a8a"
+                    color: "#9a9a9a"
                 }
 
                 Repeater {
@@ -166,8 +194,10 @@ Item {
 
                         width: contentCol.width
                         height: 30
-                        radius: 4
-                        color: modelData.id === root.sink?.id ? "#333333" : "transparent"
+                        radius: 6
+                        color: modelData.id === root.sink?.id
+                            ? "#0A84FF"
+                            : (hoverArea.containsMouse ? Qt.rgba(1, 1, 1, 0.08) : "transparent")
 
                         Text {
                             anchors.left: parent.left
@@ -183,7 +213,9 @@ Item {
                         }
 
                         MouseArea {
+                            id: hoverArea
                             anchors.fill: parent
+                            hoverEnabled: true
                             cursorShape: Qt.PointingHandCursor
                             onClicked: {
                                 Pipewire.preferredDefaultAudioSink = modelData

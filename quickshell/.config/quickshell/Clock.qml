@@ -76,10 +76,10 @@ Item {
                 horizontalCenter: parent.horizontalCenter
                 topMargin: 40
             }
-            width: 260
-            height: contentCol.implicitHeight + 20
+            width: 280
+            height: contentCol.implicitHeight + 24
             color: Qt.rgba(0, 0, 0, 0.6)
-            radius: 8
+            radius: 11
             border.color: "#333333"
             border.width: 1
 
@@ -91,16 +91,22 @@ Item {
             Column {
                 id: contentCol
                 anchors.fill: parent
-                anchors.margins: 10
-                spacing: 6
+                anchors.margins: 12
+                spacing: 10
 
                 Text {
                     anchors.horizontalCenter: parent.horizontalCenter
                     text: calGrid.locale.standaloneMonthName(calGrid.month) + " " + calGrid.year
                     font.family: Theme.textFontFamily
-                    font.weight: Theme.textFontWeight
+                    font.weight: Font.DemiBold
                     font.pixelSize: 14
                     color: "#ffffff"
+                }
+
+                Rectangle {
+                    width: parent.width
+                    height: 1
+                    color: "#333333"
                 }
 
                 DayOfWeekRow {
@@ -113,7 +119,7 @@ Item {
                         font.family: Theme.textFontFamily
                         font.weight: Theme.textFontWeight
                         font.pixelSize: 11
-                        color: "#8a8a8a"
+                        color: "#9a9a9a"
                         horizontalAlignment: Text.AlignHCenter
                     }
                 }
@@ -132,9 +138,9 @@ Item {
                         verticalAlignment: Text.AlignVCenter
                         opacity: model.month === calGrid.month ? 1 : 0.3
                         font.family: Theme.textFontFamily
-                        font.weight: Theme.textFontWeight
+                        font.weight: model.today ? Font.DemiBold : Theme.textFontWeight
                         font.pixelSize: 12
-                        color: model.today ? "#000000" : "#ffffff"
+                        color: "#ffffff"
 
                         Rectangle {
                             visible: model.today
@@ -142,7 +148,7 @@ Item {
                             width: 22
                             height: 22
                             radius: 11
-                            color: "#ffffff"
+                            color: "#0A84FF"
                             z: -1
                         }
                     }

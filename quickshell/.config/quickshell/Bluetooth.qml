@@ -135,10 +135,10 @@ Item {
                 topMargin: 40
                 rightMargin: 10
             }
-            width: 260
-            height: Math.min(contentCol.implicitHeight + 20, 400)
+            width: 280
+            height: Math.min(contentCol.implicitHeight + 24, 420)
             color: Qt.rgba(0, 0, 0, 0.6)
-            radius: 8
+            radius: 11
             border.color: "#333333"
             border.width: 1
 
@@ -149,7 +149,7 @@ Item {
 
             Flickable {
                 anchors.fill: parent
-                anchors.margins: 10
+                anchors.margins: 12
                 contentHeight: contentCol.implicitHeight
                 clip: true
 
@@ -168,7 +168,7 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
                             text: "Bluetooth"
                             font.family: Theme.textFontFamily
-                            font.weight: Theme.textFontWeight
+                            font.weight: Font.DemiBold
                             font.pixelSize: 13
                             color: "#ffffff"
                         }
@@ -179,6 +179,32 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
                             checked: root.powered
                             onToggled: toggleProc.running = true
+
+                            indicator: Rectangle {
+                                implicitWidth: 36
+                                implicitHeight: 20
+                                x: btSwitch.leftPadding
+                                y: parent.height / 2 - height / 2
+                                radius: 10
+                                color: btSwitch.checked ? "#0A84FF" : Qt.rgba(1, 1, 1, 0.15)
+
+                                Behavior on color {
+                                    ColorAnimation { duration: 150 }
+                                }
+
+                                Rectangle {
+                                    x: btSwitch.checked ? parent.width - width - 2 : 2
+                                    y: 2
+                                    width: 16
+                                    height: 16
+                                    radius: 8
+                                    color: "#ffffff"
+
+                                    Behavior on x {
+                                        NumberAnimation { duration: 150; easing.type: Easing.OutCubic }
+                                    }
+                                }
+                            }
                         }
                     }
 
@@ -194,7 +220,7 @@ Item {
                         font.family: Theme.textFontFamily
                         font.weight: Theme.textFontWeight
                         font.pixelSize: 11
-                        color: "#8a8a8a"
+                        color: "#9a9a9a"
                     }
 
                     Repeater {
@@ -204,9 +230,11 @@ Item {
                             required property var modelData
 
                             width: contentCol.width
-                            height: 32
-                            radius: 4
-                            color: modelData.connected ? "#333333" : "transparent"
+                            height: 30
+                            radius: 6
+                            color: modelData.connected
+                                ? "#0A84FF"
+                                : (hoverArea.containsMouse ? Qt.rgba(1, 1, 1, 0.08) : "transparent")
 
                             Row {
                                 anchors.left: parent.left
@@ -233,7 +261,9 @@ Item {
                             }
 
                             MouseArea {
+                                id: hoverArea
                                 anchors.fill: parent
+                                hoverEnabled: true
                                 cursorShape: Qt.PointingHandCursor
                                 onClicked: {
                                     connectProc.mac = modelData.mac
