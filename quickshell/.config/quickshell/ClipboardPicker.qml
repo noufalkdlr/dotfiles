@@ -8,57 +8,78 @@ Scope {
     id: root
 
     property bool visible: false
-    property var allEmojis: []
+    property var allItems: []
     property var filtered: []
-    property string query: ""
-
-    FileView {
-        id: emojiFile
-        path: Qt.resolvedUrl("./data/emojis.json")
-        blockLoading: true
-    }
-
-    Component.onCompleted: {
-        try {
-            root.allEmojis = JSON.parse(emojiFile.text())
-            root.filtered = root.allEmojis
-        } catch (e) {
-            console.log("Failed to parse emojis.json:", e)
-        }
-    }
 
     function toggle() {
         root.visible = !root.visible
         if (root.visible) {
-            root.query = ""
-            root.filtered = root.allEmojis
+            listProc.running = true
         }
     }
 
     function doFilter(q) {
-        root.query = q
         if (q.length === 0) {
-            root.filtered = root.allEmojis
+            root.filtered = root.allItems
         } else {
             const lower = q.toLowerCase()
-            root.filtered = root.allEmojis.filter(e => e.text.toLowerCase().includes(lower))
+            root.filtered = root.allItems.filter(i => i.preview.toLowerCase().includes(lower))
         }
     }
 
-    function selectEmoji(char) {
-        copyProc.emojiChar = char
+    function selectItem(id) {
+        copyProc.itemId = id
         copyProc.running = true
         root.visible = false
     }
 
+    function deleteItem(id) {
+        deleteProc.itemId = id
+        deleteProc.running = true
+    }
+
+    // ---- List clipboard history ----
+    Process {
+        id: listProc
+        command: ["cliphist", "list"]
+
+        stdout: StdioCollector {
+            onStreamFinished: {
+                const lines = this.text.split("\n").filter(l => l.length > 0)
+                const items = []
+                for (const line of lines) {
+                    const tabIndex = line.indexOf("\t")
+                    if (tabIndex === -1) continue
+                    const id = line.substring(0, tabIndex)
+                    const preview = line.substring(tabIndex + 1)
+                    items.push({ id: id, preview: preview })
+                }
+                root.allItems = items
+                root.filtered = items
+            }
+        }
+    }
+
+    // ---- Copy selected item ----
     Process {
         id: copyProc
-        property string emojiChar: ""
-        command: ["sh", "-c", "printf '%s' " + JSON.stringify(emojiChar) + " | wl-copy"]
+        property string itemId: ""
+        command: ["sh", "-c", "printf '%s' " + JSON.stringify(itemId) + " | cliphist decode | wl-copy"]
+    }
+
+    // ---- Delete item from history ----
+    Process {
+        id: deleteProc
+        property string itemId: ""
+        command: ["sh", "-c", "printf '%s' " + JSON.stringify(itemId) + " | cliphist delete"]
+
+        stdout: StdioCollector {
+            onStreamFinished: listProc.running = true
+        }
     }
 
     IpcHandler {
-        target: "emojiPicker"
+        target: "clipboardPicker"
 
         function toggle() {
             root.toggle()
@@ -96,8 +117,8 @@ Scope {
 
             Rectangle {
                 anchors.centerIn: parent
-                width: 400
-                height: 420
+                width: 370
+                height: 475
                 color: Qt.rgba(0, 0, 0, 0.7)
                 radius: 12
                 border.color: Qt.rgba(1, 1, 1, 0.1)
@@ -117,7 +138,7 @@ Scope {
                         id: searchField
                         width: parent.width
                         height: 38
-                        placeholderText: "Search emoji..."
+                        placeholderText: "Search clipboard..."
                         leftPadding: 12
                         rightPadding: 12
                         color: "#ffffff"
@@ -134,7 +155,7 @@ Scope {
 
                         onTextChanged: {
                             root.doFilter(text)
-                            grid.currentIndex = 0
+                            listView.currentIndex = 0
                         }
 
                         Keys.onPressed: (event) => {
@@ -142,45 +163,28 @@ Scope {
                                 root.visible = false
                                 event.accepted = true
                             } else if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
-                                if (root.filtered.length > 0 && grid.currentIndex >= 0) {
-                                    root.selectEmoji(root.filtered[grid.currentIndex].emoji)
+                                if (root.filtered.length > 0 && listView.currentIndex >= 0) {
+                                    root.selectItem(root.filtered[listView.currentIndex].id)
                                 }
                                 event.accepted = true
                             } else if (event.key === Qt.Key_Down || (event.modifiers & Qt.ControlModifier && event.key === Qt.Key_N)) {
-                                grid.currentIndex = Math.min(grid.currentIndex + grid.columns, root.filtered.length - 1)
+                                listView.currentIndex = Math.min(listView.currentIndex + 1, root.filtered.length - 1)
                                 event.accepted = true
                             } else if (event.key === Qt.Key_Up || (event.modifiers & Qt.ControlModifier && event.key === Qt.Key_P)) {
-                                grid.currentIndex = Math.max(grid.currentIndex - grid.columns, 0)
-                                event.accepted = true
-                            } else if (event.key === Qt.Key_Left || (event.modifiers & Qt.ControlModifier && event.key === Qt.Key_H)) {
-                                grid.currentIndex = Math.max(grid.currentIndex - 1, 0)
-                                event.accepted = true
-                            } else if (event.key === Qt.Key_Right || (event.modifiers & Qt.ControlModifier && event.key === Qt.Key_L)) {
-                                grid.currentIndex = Math.min(grid.currentIndex + 1, root.filtered.length - 1)
-                                event.accepted = true
-                            } else if (event.modifiers & Qt.ControlModifier && event.key === Qt.Key_J) {
-                                grid.currentIndex = Math.min(grid.currentIndex + grid.columns, root.filtered.length - 1)
-                                event.accepted = true
-                            } else if (event.modifiers & Qt.ControlModifier && event.key === Qt.Key_K) {
-                                grid.currentIndex = Math.max(grid.currentIndex - grid.columns, 0)
+                                listView.currentIndex = Math.max(listView.currentIndex - 1, 0)
                                 event.accepted = true
                             }
                         }
                     }
 
-                    GridView {
-                        id: grid
+                    ListView {
+                        id: listView
                         width: parent.width
                         height: parent.height - searchField.height - 8
                         clip: true
-
-                        readonly property int columns: 8
-                        cellWidth: width / columns
-                        cellHeight: 44
-
-                        model: root.filtered
                         currentIndex: 0
                         highlightFollowsCurrentItem: true
+                        spacing: 4
 
                         highlight: Rectangle {
                             color: Qt.rgba(1, 1, 1, 0.12)
@@ -189,28 +193,57 @@ Scope {
                             border.width: 1
                         }
 
+                        model: root.filtered
+
                         delegate: Item {
                             required property var modelData
                             required property int index
 
-                            width: grid.cellWidth
-                            height: grid.cellHeight
+                            width: listView.width
+                            height: 34
+
+                            Row {
+                                anchors.left: parent.left
+                                anchors.leftMargin: 10
+                                anchors.right: deleteBtn.left
+                                anchors.rightMargin: 6
+                                anchors.verticalCenter: parent.verticalCenter
+
+                                Text {
+                                    text: modelData.preview
+                                    font.family: "Cascadia Mono"
+                                    font.pixelSize: 13
+                                    font.weight: index === listView.currentIndex ? Font.Bold : Font.Normal
+                                    color: "#ffffff"
+                                    elide: Text.ElideRight
+                                    width: parent.width
+                                }
+                            }
 
                             Text {
-                                anchors.centerIn: parent
-                                text: modelData.emoji
-                                font.pixelSize: 20
+                                id: deleteBtn
+                                anchors.right: parent.right
+                                anchors.rightMargin: 10
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: "\uf1f8"
+                                font.family: Theme.fontFamily
+                                font.pixelSize: 12
+                                color: Qt.rgba(1, 1, 1, 0.4)
+
+                                MouseArea {
+                                    anchors.fill: parent
+                                    cursorShape: Qt.PointingHandCursor
+                                    onClicked: root.deleteItem(modelData.id)
+                                }
                             }
 
                             MouseArea {
                                 anchors.fill: parent
+                                anchors.rightMargin: 26
                                 hoverEnabled: true
                                 cursorShape: Qt.PointingHandCursor
-                                onEntered: grid.currentIndex = index
-                                onClicked: root.selectEmoji(modelData.emoji)
-
-                                ToolTip.visible: containsMouse
-                                ToolTip.text: modelData.text.split(" ")[0] + " " + modelData.text.split(" ")[1]
+                                onEntered: listView.currentIndex = index
+                                onClicked: root.selectItem(modelData.id)
                             }
                         }
                     }

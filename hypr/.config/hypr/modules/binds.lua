@@ -90,10 +90,7 @@ hl.bind(
 )
 
 -- Clipboard History (SUPER + V)
-hl.bind(
-	"SUPER + V",
-	hl.dsp.exec_cmd([[cliphist list | sed 's/\t/  /g' | wofi --dmenu | sed 's/  /\t/g' | cliphist decode | wl-copy]])
-)
+hl.bind("SUPER + V", hl.dsp.exec_cmd("qs ipc call clipboardPicker toggle"))
 
 -- Emoji Picker (SUPER + ;)
 hl.bind(mainMod .. " + semicolon", hl.dsp.exec_cmd("qs ipc call emojiPicker toggle"))

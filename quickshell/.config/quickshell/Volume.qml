@@ -75,7 +75,7 @@ Item {
             anchors {
                 top: parent.top
                 right: parent.right
-                topMargin: 10
+                topMargin: 40
                 rightMargin: 10
             }
             width: 240
