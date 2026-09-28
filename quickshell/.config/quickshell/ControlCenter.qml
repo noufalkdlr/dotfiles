@@ -62,6 +62,7 @@ Item {
 
         WlrLayershell.namespace: "quickshell-popup"
         WlrLayershell.layer: WlrLayer.Overlay
+        WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand   // needed for the Wi-Fi password field
 
         anchors {
             top: true

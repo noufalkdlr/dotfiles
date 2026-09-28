@@ -18,7 +18,6 @@ Singleton {
     property string connectError: ""       // last failure message ("" = none)
     property string passwordRequestSsid: ""  // set when a connect attempt needed a password
 
-    function refresh() { checkProc.running = true }
     function scan() {
         connectError = ""
         knownProc.running = true

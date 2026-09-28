@@ -24,7 +24,6 @@ QtObject {
     // Search field (capsule)
     readonly property int fieldHeight: 42
     readonly property int fieldRadius: fieldHeight / 2
-    readonly property int fieldPaddingV: 8
     readonly property int fieldPaddingH: 16
     readonly property int fieldPaddingLeft: 42                             // room for the search glyph
     readonly property color fieldBg: Qt.rgba(1, 1, 1, 0.09)

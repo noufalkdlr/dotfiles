@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.Controls
 import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
@@ -11,7 +10,6 @@ Item {
     width: 32
     height: 32
 
-    property alias iconText: icon.text
     property string username: ""
     property string hostname: ""
     property string uptime: ""
@@ -222,14 +220,17 @@ Item {
                                 spacing: 8
 
                                 Text {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: 16
+                                    horizontalAlignment: Text.AlignHCenter
                                     text: modelData.icon
                                     font.family: Theme.fontFamily
                                     font.pixelSize: 12
                                     color: "#ffffff"
-                                    width: 16
                                 }
 
                                 Text {
+                                    anchors.verticalCenter: parent.verticalCenter
                                     text: modelData.label
                                     font.family: Theme.textFontFamily
                                     font.pixelSize: 13

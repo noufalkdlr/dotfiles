@@ -17,7 +17,6 @@ Singleton {
         return d ? d.name : ""
     }
 
-    function refresh() { checkProc.running = true }
     function loadDevices() { listProc.running = true }
     function togglePower() { toggleProc.running = true }
     function setConnected(mac, doConnect) {

@@ -143,14 +143,23 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
                             spacing: 6
 
-                            Text {
-                                text: entry.secured ? "\uf023" : "\uf09c"
-                                font.family: Theme.fontFamily
-                                font.pixelSize: 11
-                                color: "#ffffff"
+                            // fixed-size icon slot: same width for every row, glyph centred in it
+                            Item {
+                                anchors.verticalCenter: parent.verticalCenter
+                                width: 14
+                                height: 16
+
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: entry.secured ? "\uf023" : "\uf09c"
+                                    font.family: Theme.fontFamily
+                                    font.pixelSize: 11
+                                    color: "#ffffff"
+                                }
                             }
 
                             Text {
+                                anchors.verticalCenter: parent.verticalCenter
                                 text: modelData.ssid + " (" + modelData.signal + "%)"
                                 font.family: Theme.textFontFamily
                                 font.weight: Theme.textFontWeight
