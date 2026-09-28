@@ -19,19 +19,10 @@ Row {
             Text {
                 anchors.centerIn: parent
                 text: modelData.id
-                font.family: Theme.fontFamily
+                font.family: Theme.textFontFamily
+                font.weight: Theme.textFontWeight
                 font.pixelSize: 14
                 color: modelData.active ? "#ffffff" : "#333333"
-            }
-
-            Rectangle {
-                anchors.bottom: parent.bottom
-                anchors.horizontalCenter: parent.horizontalCenter
-                width: 14
-                height: 2
-                radius: 1
-                color: "#ffffff"
-                visible: modelData.active
             }
 
             MouseArea {
