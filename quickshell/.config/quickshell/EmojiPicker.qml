@@ -94,14 +94,10 @@ Scope {
                 onClicked: root.visible = false
             }
 
-            Rectangle {
+            GlassPanel {
                 anchors.centerIn: parent
                 width: 400
                 height: 420
-                color: PickerStyle.windowColor
-                radius: PickerStyle.windowRadius
-                border.color: PickerStyle.borderColor
-                border.width: PickerStyle.borderWidth
 
                 MouseArea {
                     anchors.fill: parent
@@ -118,7 +114,7 @@ Scope {
                         width: parent.width
                         height: PickerStyle.fieldHeight
                         placeholderText: "Search emoji..."
-                        leftPadding: PickerStyle.fieldPaddingH
+                        leftPadding: PickerStyle.fieldPaddingLeft
                         rightPadding: PickerStyle.fieldPaddingH
                         color: PickerStyle.textColor
                         placeholderTextColor: PickerStyle.placeholderColor
@@ -128,9 +124,19 @@ Scope {
 
                         background: Rectangle {
                             color: PickerStyle.fieldBg
-                            radius: 8
+                            radius: PickerStyle.fieldRadius
                             border.color: PickerStyle.fieldBorder
                             border.width: 1
+
+                            Text {
+                                anchors.left: parent.left
+                                anchors.leftMargin: 16
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: "\uf002"
+                                font.family: Theme.fontFamily
+                                font.pixelSize: 14
+                                color: PickerStyle.placeholderColor
+                            }
                         }
 
                         onTextChanged: {
@@ -177,7 +183,7 @@ Scope {
 
                         readonly property int columns: 8
                         cellWidth: width / columns
-                        cellHeight: 44
+                        cellHeight: 46
 
                         model: root.filtered
                         currentIndex: 0
@@ -185,7 +191,7 @@ Scope {
 
                         highlight: Rectangle {
                             color: PickerStyle.highlightColor
-                            radius: 8
+                            radius: PickerStyle.itemRadius
                             border.color: PickerStyle.highlightBorder
                             border.width: 1
                         }

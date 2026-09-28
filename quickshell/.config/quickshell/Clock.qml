@@ -70,18 +70,17 @@ Item {
             onClicked: popup.visible = false
         }
 
-        Rectangle {
+        GlassPanel {
             anchors {
                 top: parent.top
                 horizontalCenter: parent.horizontalCenter
-                topMargin: 40
+                topMargin: Theme.popupTopMargin
             }
             width: 280
             height: contentCol.implicitHeight + 24
-            color: Qt.rgba(0, 0, 0, 0.6)
-            radius: 11
-            border.color: "#333333"
-            border.width: 1
+            transformOrigin: Item.Top
+            autoShow: false
+            shown: popup.visible
 
             MouseArea {
                 anchors.fill: parent
@@ -106,7 +105,7 @@ Item {
                 Rectangle {
                     width: parent.width
                     height: 1
-                    color: "#333333"
+                    color: PickerStyle.dividerColor
                 }
 
                 DayOfWeekRow {

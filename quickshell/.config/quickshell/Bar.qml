@@ -16,11 +16,19 @@ Scope {
                     left: true
                     right: true
                 }
-                implicitHeight: 30
+                implicitHeight: Theme.barHeight
 
                 Rectangle {
                     anchors.fill: parent
-                    color: Qt.rgba(0, 0, 0, 0.6)
+                    color: Theme.barColor
+
+                    // thin bottom hairline
+                    Rectangle {
+                        anchors.bottom: parent.bottom
+                        width: parent.width
+                        height: 1
+                        color: Theme.barBorder
+                    }
 
                     // ---- LEFT ----
                     Row {
@@ -51,13 +59,7 @@ Scope {
                         anchors.verticalCenter: parent.verticalCenter
                         spacing: 16
 
-                        Network {
-                            anchors.verticalCenter: parent.verticalCenter
-                          }
-                        Bluetooth {
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                        Volume {
+                        ControlCenter {
                             anchors.verticalCenter: parent.verticalCenter
                         }
                     }

@@ -115,14 +115,10 @@ Scope {
                 onClicked: root.visible = false
             }
 
-            Rectangle {
+            GlassPanel {
                 anchors.centerIn: parent
                 width: 370
                 height: 475
-                color: PickerStyle.windowColor
-                radius: PickerStyle.windowRadius
-                border.color: PickerStyle.borderColor
-                border.width: PickerStyle.borderWidth
 
                 MouseArea {
                     anchors.fill: parent
@@ -139,7 +135,7 @@ Scope {
                         width: parent.width
                         height: PickerStyle.fieldHeight
                         placeholderText: "Search clipboard..."
-                        leftPadding: PickerStyle.fieldPaddingH
+                        leftPadding: PickerStyle.fieldPaddingLeft
                         rightPadding: PickerStyle.fieldPaddingH
                         color: PickerStyle.textColor
                         placeholderTextColor: PickerStyle.placeholderColor
@@ -149,9 +145,19 @@ Scope {
 
                         background: Rectangle {
                             color: PickerStyle.fieldBg
-                            radius: 8
+                            radius: PickerStyle.fieldRadius
                             border.color: PickerStyle.fieldBorder
                             border.width: 1
+
+                            Text {
+                                anchors.left: parent.left
+                                anchors.leftMargin: 16
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: "\uf002"
+                                font.family: Theme.fontFamily
+                                font.pixelSize: 14
+                                color: PickerStyle.placeholderColor
+                            }
                         }
 
                         onTextChanged: {
@@ -185,11 +191,12 @@ Scope {
                         clip: true
                         currentIndex: 0
                         highlightFollowsCurrentItem: true
+                        highlightMoveDuration: 120
                         spacing: PickerStyle.itemSpacing
 
                         highlight: Rectangle {
                             color: PickerStyle.highlightColor
-                            radius: 8
+                            radius: PickerStyle.itemRadius
                             border.color: PickerStyle.highlightBorder
                             border.width: 1
                         }
@@ -205,7 +212,7 @@ Scope {
 
                             Row {
                                 anchors.left: parent.left
-                                anchors.leftMargin: 10
+                                anchors.leftMargin: PickerStyle.itemPaddingH
                                 anchors.right: deleteBtn.left
                                 anchors.rightMargin: 6
                                 anchors.verticalCenter: parent.verticalCenter
@@ -214,7 +221,7 @@ Scope {
                                     text: modelData.preview
                                     font.family: PickerStyle.fontFamily
                                     font.pixelSize: PickerStyle.itemFontSize
-                                    font.weight: index === listView.currentIndex ? Font.Bold : Font.Normal
+                                    font.weight: PickerStyle.fontWeight
                                     color: PickerStyle.textColor
                                     elide: Text.ElideRight
                                     width: parent.width
@@ -224,7 +231,7 @@ Scope {
                             Text {
                                 id: deleteBtn
                                 anchors.right: parent.right
-                                anchors.rightMargin: 10
+                                anchors.rightMargin: PickerStyle.itemPaddingH
                                 anchors.verticalCenter: parent.verticalCenter
                                 text: "\uf1f8"
                                 font.family: Theme.fontFamily

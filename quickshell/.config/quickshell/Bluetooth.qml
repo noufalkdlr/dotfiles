@@ -128,19 +128,18 @@ Item {
             onClicked: popup.visible = false
         }
 
-        Rectangle {
+        GlassPanel {
             anchors {
                 top: parent.top
                 right: parent.right
-                topMargin: 40
+                topMargin: Theme.popupTopMargin
                 rightMargin: 10
             }
             width: 280
             height: Math.min(contentCol.implicitHeight + 24, 420)
-            color: Qt.rgba(0, 0, 0, 0.6)
-            radius: 11
-            border.color: "#333333"
-            border.width: 1
+            transformOrigin: Item.TopRight
+            autoShow: false
+            shown: popup.visible
 
             MouseArea {
                 anchors.fill: parent
@@ -211,7 +210,7 @@ Item {
                     Rectangle {
                         width: parent.width
                         height: 1
-                        color: "#333333"
+                        color: PickerStyle.dividerColor
                     }
 
                     // ---- Device list ----
@@ -231,9 +230,9 @@ Item {
 
                             width: contentCol.width
                             height: 30
-                            radius: 6
+                            radius: 8
                             color: modelData.connected
-                                ? "#0A84FF"
+                                ? PickerStyle.highlightColor
                                 : (hoverArea.containsMouse ? Qt.rgba(1, 1, 1, 0.08) : "transparent")
 
                             Row {

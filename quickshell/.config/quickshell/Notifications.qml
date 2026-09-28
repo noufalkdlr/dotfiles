@@ -34,7 +34,7 @@ Scope {
             right: true
         }
         margins {
-            top: 40
+            top: Theme.popupTopMargin
             right: 10
         }
 
@@ -49,21 +49,19 @@ Scope {
             Repeater {
                 model: server.trackedNotifications.values
 
-                delegate: Rectangle {
+                delegate: GlassPanel {
                     required property var modelData
 
-                    readonly property color urgencyBorder: {
-                        if (modelData.urgency === NotificationUrgency.Critical) return "#ff7b63"
-                        if (modelData.urgency === NotificationUrgency.Low) return "#242424"
-                        return "#3584e4"
-                    }
+                    readonly property bool critical: modelData.urgency === NotificationUrgency.Critical
 
                     width: toastColumn.width
-                    height: Math.max(110, contentCol.implicitHeight + 30)
-                    color: Qt.rgba(0, 0, 0, 0.6)
-                    radius: 12
-                    border.color: urgencyBorder
-                    border.width: 2
+                    height: Math.max(96, contentCol.implicitHeight + 30)
+                    radius: 22
+                    transformOrigin: Item.TopRight
+
+                    // glass border; only critical notifications get a coloured edge
+                    border.color: critical ? "#ff7b63" : PickerStyle.borderColor
+                    border.width: critical ? 2 : PickerStyle.borderWidth
 
                     Timer {
                         running: modelData.expireTimeout > 0 || modelData.urgency !== NotificationUrgency.Critical
@@ -88,7 +86,7 @@ Scope {
                                 font.family: Theme.textFontFamily
                                 font.weight: Theme.textFontWeight
                                 font.pixelSize: 11
-                                color: "#8a8a8a"
+                                color: PickerStyle.placeholderColor
                             }
 
                             Text {
@@ -97,7 +95,7 @@ Scope {
                                 text: "\uf00d"
                                 font.family: Theme.fontFamily
                                 font.pixelSize: 11
-                                color: "#8a8a8a"
+                                color: PickerStyle.placeholderColor
 
                                 MouseArea {
                                     anchors.fill: parent
@@ -114,7 +112,7 @@ Scope {
                             font.weight: Theme.textFontWeight
                             font.pixelSize: 15
                             font.bold: true
-                            color: "#ffffff"
+                            color: PickerStyle.textColor
                             wrapMode: Text.WordWrap
                         }
 
@@ -125,7 +123,7 @@ Scope {
                             font.family: Theme.textFontFamily
                             font.weight: Theme.textFontWeight
                             font.pixelSize: 13
-                            color: "#ffffff"
+                            color: PickerStyle.textColor
                             wrapMode: Text.WordWrap
                             maximumLineCount: 3
                             elide: Text.ElideRight

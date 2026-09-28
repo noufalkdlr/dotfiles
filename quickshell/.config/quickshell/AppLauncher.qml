@@ -74,14 +74,10 @@ Scope {
                 onClicked: root.visible = false
             }
 
-            Rectangle {
+            GlassPanel {
                 anchors.centerIn: parent
                 width: 370
                 height: 480
-                color: PickerStyle.windowColor
-                radius: PickerStyle.windowRadius
-                border.color: PickerStyle.borderColor
-                border.width: PickerStyle.borderWidth
 
                 MouseArea {
                     anchors.fill: parent
@@ -98,7 +94,7 @@ Scope {
                         width: parent.width
                         height: PickerStyle.fieldHeight
                         placeholderText: "Search Apps..."
-                        leftPadding: PickerStyle.fieldPaddingH
+                        leftPadding: PickerStyle.fieldPaddingLeft
                         rightPadding: PickerStyle.fieldPaddingH
                         color: PickerStyle.textColor
                         placeholderTextColor: PickerStyle.placeholderColor
@@ -108,9 +104,19 @@ Scope {
 
                         background: Rectangle {
                             color: PickerStyle.fieldBg
-                            radius: 8
+                            radius: PickerStyle.fieldRadius
                             border.color: PickerStyle.fieldBorder
                             border.width: 1
+
+                            Text {
+                                anchors.left: parent.left
+                                anchors.leftMargin: 16
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: "\uf002"
+                                font.family: Theme.fontFamily
+                                font.pixelSize: 14
+                                color: PickerStyle.placeholderColor
+                            }
                         }
 
                         onTextChanged: {
@@ -144,11 +150,12 @@ Scope {
                         clip: true
                         currentIndex: 0
                         highlightFollowsCurrentItem: true
+                        highlightMoveDuration: 120
                         spacing: PickerStyle.itemSpacing
 
                         highlight: Rectangle {
                             color: PickerStyle.highlightColor
-                            radius: 8
+                            radius: PickerStyle.itemRadius
                             border.color: PickerStyle.highlightBorder
                             border.width: 1
                         }
@@ -164,13 +171,13 @@ Scope {
 
                             Row {
                                 anchors.left: parent.left
-                                anchors.leftMargin: 10
+                                anchors.leftMargin: PickerStyle.itemPaddingH
                                 anchors.verticalCenter: parent.verticalCenter
                                 spacing: PickerStyle.iconMarginRight
 
                                 IconImage {
-                                    width: 28
-                                    height: 28
+                                    width: PickerStyle.iconSize
+                                    height: PickerStyle.iconSize
                                     anchors.verticalCenter: parent.verticalCenter
                                     source: Quickshell.iconPath(modelData.icon)
                                 }
@@ -180,10 +187,10 @@ Scope {
                                     text: modelData.name
                                     font.family: PickerStyle.fontFamily
                                     font.pixelSize: PickerStyle.itemFontSize
-                                    font.weight: index === listView.currentIndex ? Font.Bold : Font.Normal
+                                    font.weight: PickerStyle.fontWeight
                                     color: PickerStyle.textColor
                                     elide: Text.ElideRight
-                                    width: listView.width - 60
+                                    width: listView.width - PickerStyle.iconSize - PickerStyle.iconMarginRight - PickerStyle.itemPaddingH * 2
                                 }
                             }
 
