@@ -45,8 +45,8 @@ Scope {
         }
     }
 
-    function selectEmoji(char) {
-        copyProc.emojiChar = char
+    function selectEmoji(ch) {
+        copyProc.emojiChar = ch
         copyProc.running = true
         root.visible = false
     }
@@ -213,8 +213,8 @@ Scope {
                                 anchors.fill: parent
                                 hoverEnabled: true
                                 cursorShape: Qt.PointingHandCursor
-                                onEntered: grid.currentIndex = index
                                 onClicked: root.selectEmoji(modelData.emoji)
+                                onEntered: grid.currentIndex = index
 
                                 ToolTip.visible: containsMouse
                                 ToolTip.text: modelData.text.split(" ")[0] + " " + modelData.text.split(" ")[1]

@@ -25,11 +25,13 @@ Singleton {
     }
     function toggleWifi() { toggleProc.running = true }
     function isKnown(ssid) { return knownSSIDs.indexOf(ssid) !== -1 }
-    function connectTo(ssid, password) {
+    // hidden = true for networks that don't broadcast their name ("Other...")
+    function connectTo(ssid, password, hidden) {
         connectError = ""
         connectingSsid = ssid
         connectProc.targetSsid = ssid
         connectProc.targetPassword = password || ""
+        connectProc.targetHidden = hidden === true
         connectProc.running = true
     }
     function disconnectCurrent() { disconnectProc.running = true }
@@ -117,16 +119,17 @@ Singleton {
     }
 
     // ---- Connect ----
-    // ssid / password are passed as positional parameters ($1 / $2), never spliced into the script.
+    // ssid / password / hidden flag are passed as positional parameters ($1 / $2 / $3), never spliced into the script.
     // On failure with a typed password, the half-created profile is deleted again so a wrong
     // password doesn't leave a "known" network behind.
     Process {
         id: connectProc
         property string targetSsid: ""
         property string targetPassword: ""
+        property bool targetHidden: false
         command: ["sh", "-c",
-            'if [ -n "$2" ]; then out=$(nmcli dev wifi connect "$1" password "$2" 2>&1); else out=$(nmcli dev wifi connect "$1" 2>&1); fi; rc=$?; if [ $rc -ne 0 ] && [ -n "$2" ]; then nmcli connection delete id "$1" >/dev/null 2>&1; fi; printf "%s\\n__rc=%s\\n" "$out" "$rc"',
-            "sh", targetSsid, targetPassword]
+            'h=""; [ "$3" = "1" ] && h="hidden yes"; if [ -n "$2" ]; then out=$(nmcli dev wifi connect "$1" password "$2" $h 2>&1); else out=$(nmcli dev wifi connect "$1" $h 2>&1); fi; rc=$?; if [ $rc -ne 0 ] && [ -n "$2" ]; then nmcli connection delete id "$1" >/dev/null 2>&1; fi; printf "%s\\n__rc=%s\\n" "$out" "$rc"',
+            "sh", targetSsid, targetPassword, targetHidden ? "1" : ""]
 
         stdout: StdioCollector {
             onStreamFinished: {
@@ -143,7 +146,8 @@ Singleton {
                     root.passwordRequestSsid = ssid
                 } else {
                     root.connectError = "Couldn't connect to " + ssid + "."
-                        + (connectProc.targetPassword.length > 0 ? " Check the password and try again." : "")
+                        + (connectProc.targetHidden ? " Check the network name and password."
+                            : (connectProc.targetPassword.length > 0 ? " Check the password and try again." : ""))
                 }
 
                 checkProc.running = true

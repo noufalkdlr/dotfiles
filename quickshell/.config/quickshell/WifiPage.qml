@@ -9,12 +9,28 @@ Item {
 
     // network whose password box is open (set by clicking a secured, unknown network)
     property string promptSsid: ""
+    // "Other..." form (hidden network) open?
+    property bool otherOpen: false
 
     function isSecured(s) { return s.length > 0 && s !== "--" }
 
+    function closeForms() {
+        promptSsid = ""
+        otherOpen = false
+        NetworkState.passwordRequestSsid = ""
+    }
+
+    function submitOther() {
+        const name = otherName.text.trim()
+        if (name.length === 0) return
+        const pw = otherPass.text
+        otherOpen = false
+        NetworkState.connectTo(name, pw, true)
+    }
+
     implicitHeight: header.height + 10 + listCol.implicitHeight
 
-    onVisibleChanged: if (!visible) promptSsid = ""
+    onVisibleChanged: if (!visible) closeForms()
 
     CCHeader {
         id: header
@@ -123,7 +139,7 @@ Item {
                         if (pw.length === 0) return
                         NetworkState.passwordRequestSsid = ""
                         page.promptSsid = ""
-                        NetworkState.connectTo(modelData.ssid, pw)
+                        NetworkState.connectTo(modelData.ssid, pw, false)
                     }
 
                     width: listCol.width
@@ -179,11 +195,12 @@ Item {
                                 if (modelData.ssid === NetworkState.currentSSID) return
                                 if (NetworkState.connectingSsid !== "") return
 
+                                page.otherOpen = false
                                 if (entry.secured && !NetworkState.isKnown(modelData.ssid)) {
                                     // new secured network: ask for the password first
                                     page.promptSsid = entry.prompting ? "" : modelData.ssid
                                 } else {
-                                    NetworkState.connectTo(modelData.ssid, "")
+                                    NetworkState.connectTo(modelData.ssid, "", false)
                                 }
                             }
                         }
@@ -195,61 +212,130 @@ Item {
                         width: parent.width
                         spacing: 6
 
-                        TextField {
+                        CCTextField {
                             id: pwField
                             width: parent.width - joinBtn.width - parent.spacing
-                            height: 32
                             echoMode: TextInput.Password
                             placeholderText: "Password"
-                            leftPadding: 10
-                            rightPadding: 10
-                            color: PickerStyle.textColor
-                            placeholderTextColor: PickerStyle.placeholderColor
-                            font.family: PickerStyle.fontFamily
-                            font.weight: PickerStyle.fontWeight
-                            font.pixelSize: 13
-
-                            background: Rectangle {
-                                radius: 8
-                                color: PickerStyle.fieldBg
-                                border.color: PickerStyle.fieldBorder
-                                border.width: 1
-                            }
 
                             onVisibleChanged: {
                                 if (visible) forceActiveFocus()
                                 else text = ""
                             }
                             onAccepted: entry.submit()
-                            Keys.onEscapePressed: {
-                                NetworkState.passwordRequestSsid = ""
-                                page.promptSsid = ""
-                            }
+                            Keys.onEscapePressed: page.closeForms()
                         }
 
-                        Rectangle {
+                        CCButton {
                             id: joinBtn
                             width: 56
-                            height: 32
-                            radius: 8
-                            color: "#0A84FF"
-                            opacity: pwField.text.length > 0 ? 1 : 0.5
-
-                            Text {
-                                anchors.centerIn: parent
-                                text: "Join"
-                                font.family: Theme.textFontFamily
-                                font.weight: Font.DemiBold
-                                font.pixelSize: 12
-                                color: "#ffffff"
-                            }
-
-                            MouseArea {
-                                anchors.fill: parent
-                                cursorShape: Qt.PointingHandCursor
-                                onClicked: entry.submit()
-                            }
+                            text: "Join"
+                            primary: true
+                            enabled: pwField.text.length > 0
+                            onClicked: entry.submit()
                         }
+                    }
+                }
+            }
+
+            // ---- Other... (join a hidden network by name) ----
+            Rectangle {
+                width: parent.width
+                height: 30
+                radius: 8
+                color: page.otherOpen
+                    ? PickerStyle.highlightColor
+                    : (otherHover.containsMouse ? Qt.rgba(1, 1, 1, 0.08) : "transparent")
+
+                Row {
+                    anchors.left: parent.left
+                    anchors.leftMargin: 8
+                    anchors.verticalCenter: parent.verticalCenter
+                    spacing: 6
+
+                    Item {
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: 14
+                        height: 16
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: "\uf067"
+                            font.family: Theme.fontFamily
+                            font.pixelSize: 11
+                            color: "#ffffff"
+                        }
+                    }
+
+                    Text {
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: "Other..."
+                        font.family: Theme.textFontFamily
+                        font.weight: Theme.textFontWeight
+                        font.pixelSize: 12
+                        color: "#ffffff"
+                    }
+                }
+
+                MouseArea {
+                    id: otherHover
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: {
+                        if (NetworkState.connectingSsid !== "") return
+                        const opening = !page.otherOpen
+                        page.closeForms()
+                        page.otherOpen = opening
+                    }
+                }
+            }
+
+            Column {
+                visible: page.otherOpen
+                width: parent.width
+                spacing: 6
+
+                onVisibleChanged: {
+                    if (visible) otherName.forceActiveFocus()
+                    else {
+                        otherName.text = ""
+                        otherPass.text = ""
+                    }
+                }
+
+                CCTextField {
+                    id: otherName
+                    width: parent.width
+                    placeholderText: "Network name"
+                    onAccepted: otherPass.forceActiveFocus()
+                    Keys.onEscapePressed: page.closeForms()
+                }
+
+                CCTextField {
+                    id: otherPass
+                    width: parent.width
+                    echoMode: TextInput.Password
+                    placeholderText: "Password (empty = open network)"
+                    onAccepted: page.submitOther()
+                    Keys.onEscapePressed: page.closeForms()
+                }
+
+                Row {
+                    spacing: 6
+                    layoutDirection: Qt.RightToLeft
+                    width: parent.width
+
+                    CCButton {
+                        text: "Join"
+                        primary: true
+                        enabled: otherName.text.trim().length > 0
+                        onClicked: page.submitOther()
+                    }
+
+                    CCButton {
+                        text: "Cancel"
+                        onClicked: page.closeForms()
                     }
                 }
             }

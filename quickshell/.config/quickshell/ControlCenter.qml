@@ -143,7 +143,7 @@ Item {
                                 icon: "\uf293"
                                 title: "Bluetooth"
                                 subtitle: !BluetoothState.powered ? "Off"
-                                    : (BluetoothState.connectedName !== "" ? BluetoothState.connectedName : "On")
+                                    : (BluetoothState.connectedLabel !== "" ? BluetoothState.connectedLabel : "On")
                                 active: BluetoothState.powered
                                 onToggled: BluetoothState.togglePower()
                                 onOpened: root.openPage("bluetooth")
@@ -217,60 +217,15 @@ Item {
                         }
 
                         // capsule volume slider (speaker icon = mute toggle)
-                        Item {
+                        CCSlider {
                             x: 14
                             y: 44
                             width: parent.width - 28
-                            height: 28
-
-                            Rectangle {
-                                anchors.fill: parent
-                                radius: height / 2
-                                color: Qt.rgba(1, 1, 1, 0.16)
-                            }
-
-                            Rectangle {
-                                width: Math.max(parent.height, parent.width * (AudioState.muted ? 0 : AudioState.volumeLevel))
-                                height: parent.height
-                                radius: height / 2
-                                color: AudioState.muted ? Qt.rgba(1, 1, 1, 0.45) : Qt.rgba(1, 1, 1, 0.92)
-                            }
-
-                            Text {
-                                width: parent.height
-                                height: parent.height
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                                text: AudioState.icon
-                                font.family: Theme.fontFamily
-                                font.pixelSize: 13
-                                color: "#3a3a3c"
-                            }
-
-                            MouseArea {
-                                id: volMouse
-                                anchors.fill: parent
-                                cursorShape: Qt.PointingHandCursor
-                                property bool dragging: false
-
-                                function apply(mx) {
-                                    AudioState.setVolume(Math.max(0, Math.min(1, mx / width)))
-                                }
-
-                                onPressed: (mouse) => {
-                                    if (mouse.x < height) {
-                                        AudioState.toggleMute()
-                                        dragging = false
-                                    } else {
-                                        dragging = true
-                                        apply(mouse.x)
-                                    }
-                                }
-                                onPositionChanged: (mouse) => {
-                                    if (dragging) apply(mouse.x)
-                                }
-                                onReleased: dragging = false
-                            }
+                            value: AudioState.volumeLevel
+                            muted: AudioState.muted
+                            icon: AudioState.icon
+                            onMoved: (v) => AudioState.setVolume(v)
+                            onIconClicked: AudioState.toggleMute()
                         }
                     }
                 }

@@ -7,6 +7,15 @@ Item {
 
     signal back()
 
+    // battery glyph for a percentage (Nerd Font / Font Awesome battery-full ... battery-empty)
+    function batteryIcon(p) {
+        if (p > 87) return "\uf240"
+        if (p > 62) return "\uf241"
+        if (p > 37) return "\uf242"
+        if (p > 12) return "\uf243"
+        return "\uf244"
+    }
+
     implicitHeight: header.height + 10 + listCol.implicitHeight
 
     CCHeader {
@@ -52,6 +61,9 @@ Item {
                 delegate: Rectangle {
                     required property var modelData
 
+                    // only connected devices that report a battery level show it
+                    readonly property bool hasBattery: modelData.connected && modelData.battery >= 0
+
                     width: listCol.width
                     height: 30
                     radius: 8
@@ -88,7 +100,33 @@ Item {
                             font.pixelSize: 12
                             color: "#ffffff"
                             elide: Text.ElideRight
-                            width: listCol.width - 60
+                            width: listCol.width - 60 - (hasBattery ? 52 : 0)
+                        }
+                    }
+
+                    // battery level on the right
+                    Row {
+                        visible: hasBattery
+                        anchors.right: parent.right
+                        anchors.rightMargin: 10
+                        anchors.verticalCenter: parent.verticalCenter
+                        spacing: 4
+
+                        Text {
+                            anchors.verticalCenter: parent.verticalCenter
+                            text: page.batteryIcon(modelData.battery)
+                            font.family: Theme.fontFamily
+                            font.pixelSize: 11
+                            color: modelData.battery <= 15 ? "#FF453A" : PickerStyle.placeholderColor
+                        }
+
+                        Text {
+                            anchors.verticalCenter: parent.verticalCenter
+                            text: modelData.battery + "%"
+                            font.family: Theme.textFontFamily
+                            font.weight: Theme.textFontWeight
+                            font.pixelSize: 11
+                            color: modelData.battery <= 15 ? "#FF453A" : PickerStyle.placeholderColor
                         }
                     }
 
