@@ -34,6 +34,7 @@ QtObject {
     // Want the accent-blue look instead? use "#0A84FF" here.
     readonly property color highlightColor: Qt.rgba(1, 1, 1, 0.15)
     readonly property color highlightBorder: "transparent"
+    readonly property int highlightMoveDuration: 90            // ms, selection slide speed (lower = faster)
     readonly property int itemHeight: 40
     readonly property int itemSpacing: 2
     readonly property int itemRadius: 12

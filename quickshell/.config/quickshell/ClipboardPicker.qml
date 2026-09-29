@@ -93,6 +93,20 @@ Scope {
             id: pickerWin
             color: "transparent"
 
+            // Last real pointer position (window coordinates). Hover events also fire when items merely
+            // appear or scroll under a *stationary* pointer; those must not move the selection.
+            property real pointerX: 0
+            property real pointerY: 0
+            property bool pointerSeen: false
+
+            function pointerMoved(x, y) {
+                const moved = pointerSeen && (Math.abs(x - pointerX) > 0.5 || Math.abs(y - pointerY) > 0.5)
+                pointerSeen = true
+                pointerX = x
+                pointerY = y
+                return moved
+            }
+
             exclusionMode: ExclusionMode.Ignore
 
             WlrLayershell.namespace: "quickshell-popup"
@@ -191,7 +205,10 @@ Scope {
                         clip: true
                         currentIndex: 0
                         highlightFollowsCurrentItem: true
-                        highlightMoveDuration: 120
+                        highlightMoveDuration: PickerStyle.highlightMoveDuration
+                        highlightMoveVelocity: -1
+                        highlightResizeDuration: 0   // no left->right grow animation when the picker opens
+                        highlightResizeVelocity: -1
                         spacing: PickerStyle.itemSpacing
 
                         highlight: Rectangle {
@@ -250,7 +267,11 @@ Scope {
                                 anchors.rightMargin: 26
                                 hoverEnabled: true
                                 cursorShape: Qt.PointingHandCursor
-                                onEntered: listView.currentIndex = index
+                                // select on real pointer movement only (not when items appear under a still pointer)
+                                onPositionChanged: (mouse) => {
+                                    const p = mapToItem(null, mouse.x, mouse.y)
+                                    if (pickerWin.pointerMoved(p.x, p.y)) listView.currentIndex = index
+                                }
                                 onClicked: root.selectItem(modelData.id)
                             }
                         }

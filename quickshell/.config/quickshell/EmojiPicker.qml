@@ -72,6 +72,20 @@ Scope {
             id: pickerWin
             color: "transparent"
 
+            // Last real pointer position (window coordinates). Hover events also fire when items merely
+            // appear or scroll under a *stationary* pointer; those must not move the selection.
+            property real pointerX: 0
+            property real pointerY: 0
+            property bool pointerSeen: false
+
+            function pointerMoved(x, y) {
+                const moved = pointerSeen && (Math.abs(x - pointerX) > 0.5 || Math.abs(y - pointerY) > 0.5)
+                pointerSeen = true
+                pointerX = x
+                pointerY = y
+                return moved
+            }
+
             exclusionMode: ExclusionMode.Ignore
 
             WlrLayershell.namespace: "quickshell-popup"
@@ -188,6 +202,7 @@ Scope {
                         model: root.filtered
                         currentIndex: 0
                         highlightFollowsCurrentItem: true
+                        highlightMoveDuration: PickerStyle.highlightMoveDuration
 
                         highlight: Rectangle {
                             color: PickerStyle.highlightColor
@@ -214,7 +229,11 @@ Scope {
                                 hoverEnabled: true
                                 cursorShape: Qt.PointingHandCursor
                                 onClicked: root.selectEmoji(modelData.emoji)
-                                onEntered: grid.currentIndex = index
+                                // select on real pointer movement only (not when items appear under a still pointer)
+                                onPositionChanged: (mouse) => {
+                                    const p = mapToItem(null, mouse.x, mouse.y)
+                                    if (pickerWin.pointerMoved(p.x, p.y)) grid.currentIndex = index
+                                }
 
                                 ToolTip.visible: containsMouse
                                 ToolTip.text: modelData.text.split(" ")[0] + " " + modelData.text.split(" ")[1]
