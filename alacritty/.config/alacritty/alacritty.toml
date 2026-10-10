@@ -1,0 +1,61 @@
+[window]
+dimensions = { columns = 112, lines = 33 }
+decorations = "None"
+padding = { x = 10, y = 10 }
+opacity = 0.7
+blur = true
+
+[font]
+size = 12.0
+offset = { x = 0, y = 3 } # ~ adjust-cell-height 10%
+
+[font.normal]
+family = "Cascadia Code NF"
+style = "SemiBold"
+
+[font.bold]
+family = "Cascadia Code NF"
+style = "Bold"
+
+[font.italic]
+family = "Cascadia Code NF"
+style = "SemiBold Italic"
+
+[font.bold_italic]
+family = "Cascadia Code NF"
+style = "Bold Italic"
+
+[colors.primary]
+background = "#000000"
+foreground = "#e3e3e3"
+
+[colors.cursor]
+cursor = "#e3e3e3"
+text = "#000000"
+
+# TokyoNight Night, with your palette overrides (6, 7, 8, 14, 15)
+[colors.normal]
+black = "#15161e"
+red = "#f7768e"
+green = "#9ece6a"
+yellow = "#e0af68"
+blue = "#7aa2f7"
+magenta = "#bb9af7"
+cyan = "#00E3FF"
+white = "#e3e3e3"
+
+[colors.bright]
+black = "#b0b0b0"
+red = "#f7768e"
+green = "#9ece6a"
+yellow = "#e0af68"
+blue = "#7aa2f7"
+magenta = "#bb9af7"
+cyan = "#56B6C2"
+white = "#e3e3e3"
+
+[keyboard]
+bindings = [
+  { key = "K", mods = "Control|Shift", action = "ScrollLineUp" },
+  { key = "J", mods = "Control|Shift", action = "ScrollLineDown" },
+]

@@ -15,6 +15,7 @@ window-decoration = false
 window-padding-x = 10
 window-padding-y = 10
 background-opacity = 0.7
+background-blur = true
 
 # Colors
 background = 000000
