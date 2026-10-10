@@ -1,7 +1,6 @@
 android-studio
 bibata-cursor-theme-bin
 figma-agent-linux
-firefox-nightly-bin
 fpm
 git-wizard
 localsend-bin
@@ -11,8 +10,6 @@ pyinstaller
 python-inquirer
 python-questionary
 qrify
-tor-browser-alpha-bin
-visual-studio-code-bin
 watchman-bin
 wayle-bin
 wofi-emoji
