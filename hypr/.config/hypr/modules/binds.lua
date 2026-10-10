@@ -5,7 +5,7 @@ local helpers = require("modules.helpers.window")
 ---------------------
 
 -- Set programs that you use
-local terminal = "ghostty"
+local terminal = "kitty"
 local fileManager = "nautilus"
 local browser = "zen-browser"
 
