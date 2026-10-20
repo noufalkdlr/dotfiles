@@ -70,7 +70,6 @@ less
 libpulse
 libvirt
 libwebp-utils
-mako
 meld
 mission-center
 mpv
@@ -147,14 +146,12 @@ virt-manager
 virtualbox
 virtualbox-guest-iso
 virtualbox-host-dkms
-waybar
 wget
 wine
 winetricks
 wireless_tools
 wireplumber
 wl-clipboard
-wofi
 xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
 xdg-utils

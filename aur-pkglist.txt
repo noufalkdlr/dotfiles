@@ -11,8 +11,6 @@ python-inquirer
 python-questionary
 qrify
 watchman-bin
-wayle-bin
-wofi-emoji
 yay
 yay-debug
 zen-browser-bin
